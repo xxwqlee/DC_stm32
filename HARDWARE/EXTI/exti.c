@@ -15,7 +15,7 @@
 //Copyright(C) 广州市星翼电子科技有限公司 2014-2024
 //All rights reserved									  
 ////////////////////////////////////////////////////////////////////////////////// 	
-u8 v_up=0,v_key0 =0;
+
 //外部中断初始化
 void EXTI_Init(void)
 {
@@ -105,7 +105,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
             }
             break;
         case GPIO_PIN_2:
-            if(KEY1==0) 	//控制LED1翻转	(DR)
+            if(KEY1==0) 	//控制LED1翻转	(DR)改变直线模组运动方向
             {
                 led1sta=!led1sta;
                 LED1(led1sta);	
@@ -130,11 +130,12 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
             break;
 
         case GPIO_PIN_13:
-            if(KEY2==0)  	//控制LED0翻转  (PU)
+            if(KEY2==0)  	 //(PU)
             {
+								//控制LED0翻转 
                 led0sta=!led0sta;
                 LED0(led0sta);
-								SendPulse(20);
+								SendPulse(20);   //控制直线模组运动20mm
             }
             break;
     }
