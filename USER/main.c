@@ -9,6 +9,9 @@
 #include "sdram.h"
 #include "touch.h"
 #include "malloc.h"
+#include "GUI.h"
+#include "WM.h"
+#include "GUIDEMO.h"
 /************************************************
  ALIENTEK 阿波罗STM32F7开发板 
 ************************************************/
@@ -202,42 +205,49 @@ int main(void)
 		u16 val4 = 0;   //2.64V
 		u16 val5 = 0;     //3.30V
 		
-		u8 lcd_id[12];
+//		u8 lcd_id[12];
 //		u8 x = 0;
 //		u32 ts = 0;
+		Write_Through();                //Cahce强制透写
     Cache_Enable();                 //打开L1-Cache
     HAL_Init();				              //初始化HAL库
     Stm32_Clock_Init(432,25,2,9);   //设置时钟,216Mhz 
     SDRAM_Init();                   //初始化SDRAM
+		MPU_Memory_Protection();    //内存保护
     delay_init(216);                //延时初始化
 		uart2_init(115200);		       	 //串口2初始化
     LED_Init();                     //初始化LED	
 		EXTI_Init();                    //外部中断初始化
-    TIM8_PWM_Init(100-1,108-1);     //216M/108=2M的计数频率，自动重装载为100，那么PWM频率为2M/100=20kHZ
-		TIM9_PWM_Init(100-1,108-1);     //216M/108=2M的计数频率，自动重装载为100，那么PWM频率为2M/100=20kHZ
 		TFTLCD_Init();                     //初始化LCD
 		tp_dev.init();				    			//触摸屏初始化 
+		TIM6_Init(999,107);             //1KHZ 定时器6设置为1ms
+    TIM7_Init(999,1079);            //触摸屏扫描速度,100HZ.
 		my_mem_init(SRAMIN);		    //初始化内部内存池
 		my_mem_init(SRAMEX);		    //初始化外部内存池
 		my_mem_init(SRAMDTCM);		    //初始化DTCM内存池
-    POINT_COLOR=RED; 
-		sprintf((char*)lcd_id,"LCD ID:%04X",lcddev.id);//将LCD ID打印到lcd_id数组。	
-		
+//    POINT_COLOR=RED; 
+//		sprintf((char*)lcd_id,"LCD ID:%04X",lcddev.id);//将LCD ID打印到lcd_id数组。	
+		__HAL_RCC_CRC_CLK_ENABLE();		//使能CRC时钟
+		WM_SetCreateFlags(WM_CF_MEMDEV);//开启STemWin存储设备
+		GUI_Init();
+    WM_MULTIBUF_Enable(1);			//开启STemWin多缓冲，RGB屏可能会用到
+		GUIDEMO_Main();					//STemWin 演示demo
 		// 关节编码器读数
 		TIM1_Encoder_Init(0xFFFF-1,1-1);  //初始化编码器1 逆时针增
 		TIM2_Encoder_Init(0xFFFF-1,1-1);	//初始化编码器2 逆时针增
 		TIM3_Encoder_Init(0xFFFF-1,1-1);	//初始化编码器3 顺时针增
 		TIM4_Encoder_Init(0xFFFF-1,1-1);	//初始化编码器4 顺时针增
 		TIM5_Encoder_Init(0xFFFF-1,1-1);	//初始化编码器5 顺时针增
+		
+		TIM8_PWM_Init(100-1,108-1);     //216M/108=2M的计数频率，自动重装载为100，那么PWM频率为2M/100=20kHZ
+		TIM9_PWM_Init(100-1,108-1);     //216M/108=2M的计数频率，自动重装载为100，那么PWM频率为2M/100=20kHZ
 	  
 		TIM_SetTIM8Compare1(val1);	//修改比较值，修改占空比
 		TIM_SetTIM8Compare2(val2);	//修改比较值，修改占空比
 		TIM_SetTIM8Compare3(val3);	//修改比较值，修改占空比
 		TIM_SetTIM8Compare4(val4);	//修改比较值，修改占空比
 		TIM_SetTIM9Compare1(val5);	//修改比较值，修改占空比
-		
-		//内存保护
-		MPU_Memory_Protection();
+			
 //		MPU_Set_Protection(0X20002000,MPU_REGION_SIZE_128B,MPU_REGION_NUMBER0,MPU_REGION_PRIV_RO_URO);//只读  
 //		printf("MPU open!\r\n");	//提示MPU打开
 		
@@ -251,7 +261,11 @@ int main(void)
 //		LCD_ShowxNum(30,190,testsram[ts],6,16,0);//显示测试数据	
 //		printf("testsram[%d]:%d\r\n",ts,testsram[ts]);
 		
-		Load_Drow_Dialog();	 	
-	  ctp_test();//电容屏测试
+//		Load_Drow_Dialog();	 	
+//	  ctp_test();//电容屏测试
+		while(1)
+    {
+			
+		}
 
 }

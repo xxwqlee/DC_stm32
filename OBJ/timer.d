@@ -78,3 +78,10 @@
 ..\obj\timer.o: ..\CORE\core_cm7.h
 ..\obj\timer.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h
 ..\obj\timer.o: ..\HARDWARE\LED\led.h
+..\obj\timer.o: ..\EMWIN\STemWin\inc\GUI.h
+..\obj\timer.o: ..\EMWIN\STemWin\inc\GUI_ConfDefaults.h
+..\obj\timer.o: ..\EMWIN\STemWin\Config\GUIConf.h
+..\obj\timer.o: ..\EMWIN\STemWin\inc\GUI_Type.h
+..\obj\timer.o: ..\EMWIN\STemWin\inc\LCD.h
+..\obj\timer.o: ..\EMWIN\STemWin\inc\Global.h
+..\obj\timer.o: ..\EMWIN\STemWin\inc\GUI_Version.h

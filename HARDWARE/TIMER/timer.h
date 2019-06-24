@@ -31,6 +31,9 @@ extern TIM_OC_InitTypeDef TIM9_CH1Handler;  //定时器9通道1句柄
 extern TIM_HandleTypeDef TIM10_Handler;         //定时器10句柄 
 extern TIM_OC_InitTypeDef TIM10_CH1Handler;     //定时器10通道1句柄
 
+extern TIM_HandleTypeDef TIM6_Handler;      //定时器6句柄 
+extern TIM_HandleTypeDef TIM7_Handler;      //定时器7句柄
+
 void TIM1_Encoder_Init(u16 arr,u16 psc);
 void TIM2_Encoder_Init(u32 arr,u16 psc);
 void TIM3_Encoder_Init(u16 arr,u16 psc);
@@ -50,5 +53,9 @@ void TIM10_PWM_Init(u16 arr,u16 psc);
 void SendPulse(u8 distance);
 volatile static u16 PU = 0;
 volatile static u16 RePU = 0;
+extern __IO int32_t OS_TimeMS;
+
+void TIM6_Init(u16 arr,u16 psc);
+void TIM7_Init(u16 arr,u16 psc);
 #endif
 
