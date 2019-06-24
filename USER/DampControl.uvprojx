@@ -365,7 +365,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F767xx,USE_HAL_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\CORE;..\OBJ;..\USER;..\HALLIB\STM32F7xx_HAL_Driver\Inc;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\HARDWARE\LED;..\HARDWARE\KEY;..\HARDWARE\EXTI;..\HARDWARE\TIMER</IncludePath>
+              <IncludePath>..\CORE;..\OBJ;..\USER;..\HALLIB\STM32F7xx_HAL_Driver\Inc;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\HARDWARE\LED;..\HARDWARE\KEY;..\HARDWARE\EXTI;..\HARDWARE\TIMER;..\HARDWARE\LCD;..\HARDWARE\MPU;..\HARDWARE\SDRAM;..\HARDWARE\TOUCH;..\HARDWARE\24CXX;..\HARDWARE\IIC;..\MALLOC</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -523,6 +523,21 @@
               <FileType>1</FileType>
               <FilePath>..\HALLIB\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_tim_ex.c</FilePath>
             </File>
+            <File>
+              <FileName>stm32f7xx_hal_sdram.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HALLIB\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_sdram.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f7xx_ll_fmc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HALLIB\STM32F7xx_HAL_Driver\Src\stm32f7xx_ll_fmc.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f7xx_hal_sram.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HALLIB\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_sram.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -563,6 +578,56 @@
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\EXTI\exti.c</FilePath>
             </File>
+            <File>
+              <FileName>lcd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\LCD\lcd.c</FilePath>
+            </File>
+            <File>
+              <FileName>mpu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\MPU\mpu.c</FilePath>
+            </File>
+            <File>
+              <FileName>sdram.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\SDRAM\sdram.c</FilePath>
+            </File>
+            <File>
+              <FileName>ctiic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\TOUCH\ctiic.c</FilePath>
+            </File>
+            <File>
+              <FileName>ft5206.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\TOUCH\ft5206.c</FilePath>
+            </File>
+            <File>
+              <FileName>gt9147.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\TOUCH\gt9147.c</FilePath>
+            </File>
+            <File>
+              <FileName>ott2001a.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\TOUCH\ott2001a.c</FilePath>
+            </File>
+            <File>
+              <FileName>touch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\TOUCH\touch.c</FilePath>
+            </File>
+            <File>
+              <FileName>24cxx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\24CXX\24cxx.c</FilePath>
+            </File>
+            <File>
+              <FileName>myiic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\IIC\myiic.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -572,6 +637,16 @@
               <FileName>readme.txt</FileName>
               <FileType>5</FileType>
               <FilePath>..\readme.txt</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>MALLOC</GroupName>
+          <Files>
+            <File>
+              <FileName>malloc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\MALLOC\malloc.c</FilePath>
             </File>
           </Files>
         </Group>
