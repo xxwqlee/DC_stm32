@@ -388,7 +388,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	
 	if(htim==(&TIM10_Handler))
 	{
-		printf("%d    %d\n",PU, RePU);	
+//		printf("%d    %d\n",PU, RePU);	
 		RePU ++;
 		if(RePU>PU)
 		{

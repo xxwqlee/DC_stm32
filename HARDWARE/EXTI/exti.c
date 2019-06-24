@@ -83,6 +83,7 @@ void EXTI15_10_IRQHandler(void)
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
     static u8 led0sta=1,led1sta=1;
+		static u8 v_up=0,v_key0 =0;
 		u16 v12 = 0, v345 = 0;
     delay_ms(50);      //消抖
     switch(GPIO_Pin)
@@ -105,7 +106,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
             }
             break;
         case GPIO_PIN_2:
-            if(KEY1==0) 	//控制LED1翻转	(DR)改变直线模组运动方向
+            if(KEY1==0) 	//控制LED1翻转	(DR)改变直线模组运动方向 PB0
             {
                 led1sta=!led1sta;
                 LED1(led1sta);	

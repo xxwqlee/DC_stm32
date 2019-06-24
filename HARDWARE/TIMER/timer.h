@@ -48,7 +48,7 @@ void TIM_SetTIM9Compare1(u16 compare);
 
 void TIM10_PWM_Init(u16 arr,u16 psc);
 void SendPulse(u8 distance);
-volatile	static u16 PU = 0;
+volatile static u16 PU = 0;
 volatile static u16 RePU = 0;
 #endif
 
