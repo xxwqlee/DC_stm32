@@ -4,7 +4,7 @@
 ..\obj\ft5206.o: ..\USER\stm32f7xx.h
 ..\obj\ft5206.o: ..\USER\stm32f767xx.h
 ..\obj\ft5206.o: ..\CORE\core_cm7.h
-..\obj\ft5206.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\ft5206.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\ft5206.o: ..\CORE\core_cmInstr.h
 ..\obj\ft5206.o: ..\CORE\cmsis_armcc.h
 ..\obj\ft5206.o: ..\CORE\core_cmFunc.h
@@ -15,7 +15,7 @@
 ..\obj\ft5206.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h
 ..\obj\ft5206.o: ..\USER\stm32f7xx.h
 ..\obj\ft5206.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h
-..\obj\ft5206.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\ft5206.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\ft5206.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc_ex.h
 ..\obj\ft5206.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio.h
 ..\obj\ft5206.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio_ex.h
@@ -83,6 +83,6 @@
 ..\obj\ft5206.o: ..\HARDWARE\TOUCH\ctiic.h
 ..\obj\ft5206.o: ..\SYSTEM\usart\usart.h
 ..\obj\ft5206.o: ..\SYSTEM\delay\delay.h
-..\obj\ft5206.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+..\obj\ft5206.o: E:\Keil\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\ft5206.o: ..\HARDWARE\LCD\TFTlcd.h
-..\obj\ft5206.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+..\obj\ft5206.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdlib.h

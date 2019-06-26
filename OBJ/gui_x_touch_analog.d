@@ -11,7 +11,7 @@
 ..\obj\gui_x_touch_analog.o: ..\USER\stm32f7xx.h
 ..\obj\gui_x_touch_analog.o: ..\USER\stm32f767xx.h
 ..\obj\gui_x_touch_analog.o: ..\CORE\core_cm7.h
-..\obj\gui_x_touch_analog.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\gui_x_touch_analog.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\gui_x_touch_analog.o: ..\CORE\core_cmInstr.h
 ..\obj\gui_x_touch_analog.o: ..\CORE\cmsis_armcc.h
 ..\obj\gui_x_touch_analog.o: ..\CORE\core_cmFunc.h
@@ -22,7 +22,7 @@
 ..\obj\gui_x_touch_analog.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h
 ..\obj\gui_x_touch_analog.o: ..\USER\stm32f7xx.h
 ..\obj\gui_x_touch_analog.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h
-..\obj\gui_x_touch_analog.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\gui_x_touch_analog.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\gui_x_touch_analog.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc_ex.h
 ..\obj\gui_x_touch_analog.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio.h
 ..\obj\gui_x_touch_analog.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio_ex.h
@@ -88,5 +88,5 @@
 ..\obj\gui_x_touch_analog.o: ..\HARDWARE\TOUCH\gt9147.h
 ..\obj\gui_x_touch_analog.o: ..\HARDWARE\TOUCH\ft5206.h
 ..\obj\gui_x_touch_analog.o: ..\HARDWARE\LCD\tftlcd.h
-..\obj\gui_x_touch_analog.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+..\obj\gui_x_touch_analog.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\gui_x_touch_analog.o: ..\SYSTEM\usart\usart.h

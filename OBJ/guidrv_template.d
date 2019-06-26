@@ -1,5 +1,5 @@
 ..\obj\guidrv_template.o: ..\EMWIN\STemWin\Config\GUIDRV_Template.c
-..\obj\guidrv_template.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\guidrv_template.o: E:\Keil\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\guidrv_template.o: ..\EMWIN\STemWin\inc\LCD_Private.h
 ..\obj\guidrv_template.o: ..\EMWIN\STemWin\inc\LCDConf.h
 ..\obj\guidrv_template.o: ..\EMWIN\STemWin\inc\LCD_Protected.h
@@ -19,7 +19,7 @@
 ..\obj\guidrv_template.o: ..\USER\stm32f7xx.h
 ..\obj\guidrv_template.o: ..\USER\stm32f767xx.h
 ..\obj\guidrv_template.o: ..\CORE\core_cm7.h
-..\obj\guidrv_template.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\guidrv_template.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\guidrv_template.o: ..\CORE\core_cmInstr.h
 ..\obj\guidrv_template.o: ..\CORE\cmsis_armcc.h
 ..\obj\guidrv_template.o: ..\CORE\core_cmFunc.h
@@ -30,7 +30,7 @@
 ..\obj\guidrv_template.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h
 ..\obj\guidrv_template.o: ..\USER\stm32f7xx.h
 ..\obj\guidrv_template.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h
-..\obj\guidrv_template.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\guidrv_template.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\guidrv_template.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc_ex.h
 ..\obj\guidrv_template.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio.h
 ..\obj\guidrv_template.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio_ex.h
@@ -92,5 +92,5 @@
 ..\obj\guidrv_template.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_mdios.h
 ..\obj\guidrv_template.o: ..\CORE\core_cm7.h
 ..\obj\guidrv_template.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h
-..\obj\guidrv_template.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+..\obj\guidrv_template.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\guidrv_template.o: ..\HARDWARE\LCD\ltdc.h

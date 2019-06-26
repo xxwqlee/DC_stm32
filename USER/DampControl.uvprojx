@@ -10,6 +10,7 @@
       <TargetName>DampControl</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
+      <pCCUsed>5060300::V5.06 update 3 (build 300)::ARMCC</pCCUsed>
       <TargetOption>
         <TargetCommonOption>
           <Device>STM32F767IGTx</Device>
@@ -84,6 +85,8 @@
             <UserProg2Name></UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
             <UserProg2Dos16Mode>0</UserProg2Dos16Mode>
+            <nStopA1X>0</nStopA1X>
+            <nStopA2X>0</nStopA2X>
           </AfterMake>
           <SelectedForBatchBuild>0</SelectedForBatchBuild>
           <SVCSIdString></SVCSIdString>
@@ -122,47 +125,6 @@
             <HexOffset>0</HexOffset>
             <Oh166RecLen>16</Oh166RecLen>
           </OPTHX>
-          <Simulator>
-            <UseSimulator>0</UseSimulator>
-            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
-            <RunToMain>1</RunToMain>
-            <RestoreBreakpoints>1</RestoreBreakpoints>
-            <RestoreWatchpoints>1</RestoreWatchpoints>
-            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
-            <RestoreFunctions>1</RestoreFunctions>
-            <RestoreToolbox>1</RestoreToolbox>
-            <LimitSpeedToRealTime>0</LimitSpeedToRealTime>
-            <RestoreSysVw>1</RestoreSysVw>
-          </Simulator>
-          <Target>
-            <UseTarget>1</UseTarget>
-            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
-            <RunToMain>1</RunToMain>
-            <RestoreBreakpoints>1</RestoreBreakpoints>
-            <RestoreWatchpoints>1</RestoreWatchpoints>
-            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
-            <RestoreFunctions>0</RestoreFunctions>
-            <RestoreToolbox>1</RestoreToolbox>
-            <RestoreTracepoints>1</RestoreTracepoints>
-            <RestoreSysVw>1</RestoreSysVw>
-          </Target>
-          <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>6</TargetSelection>
-          <SimDlls>
-            <CpuDll></CpuDll>
-            <CpuDllArguments></CpuDllArguments>
-            <PeripheralDll></PeripheralDll>
-            <PeripheralDllArguments></PeripheralDllArguments>
-            <InitializationFile></InitializationFile>
-          </SimDlls>
-          <TargetDlls>
-            <CpuDll></CpuDll>
-            <CpuDllArguments></CpuDllArguments>
-            <PeripheralDll></PeripheralDll>
-            <PeripheralDllArguments></PeripheralDllArguments>
-            <InitializationFile></InitializationFile>
-            <Driver>Segger\JL2CM3.dll</Driver>
-          </TargetDlls>
         </DebugOption>
         <Utilities>
           <Flash1>
@@ -227,6 +189,7 @@
             <useUlib>0</useUlib>
             <EndSel>0</EndSel>
             <uLtcg>0</uLtcg>
+            <nSecure>0</nSecure>
             <RoSelD>3</RoSelD>
             <RwSelD>3</RwSelD>
             <CodeSel>0</CodeSel>
@@ -361,11 +324,18 @@
             <uSurpInc>0</uSurpInc>
             <uC99>0</uC99>
             <useXO>0</useXO>
+            <v6Lang>1</v6Lang>
+            <v6LangP>1</v6LangP>
+            <vShortEn>1</vShortEn>
+            <vShortWch>1</vShortWch>
+            <v6Lto>0</v6Lto>
+            <v6WtE>0</v6WtE>
+            <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F767xx,ARM_MATH_CM7,__CC_ARM,ARM_MATH_MATRIX_CHECK,ARM_MATH_ROUNDING,__FPU_PRESENT=1</Define>
               <Undefine></Undefine>
-              <IncludePath>..\CORE;..\OBJ;..\USER;..\HALLIB\STM32F7xx_HAL_Driver\Inc;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\HARDWARE\LED;..\HARDWARE\KEY;..\HARDWARE\EXTI;..\HARDWARE\TIMER;..\HARDWARE\LCD;..\HARDWARE\MPU;..\HARDWARE\SDRAM;..\HARDWARE\TOUCH;..\HARDWARE\24CXX;..\HARDWARE\IIC;..\MALLOC;..\DSP_LIB\include;..\EMWIN\STemWin\inc;..\EMWIN\STemWin\Config;..\EMWIN\Demo</IncludePath>
+              <IncludePath>..\CORE;..\OBJ;..\USER;..\HALLIB\STM32F7xx_HAL_Driver\Inc;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\HARDWARE\LED;..\HARDWARE\KEY;..\HARDWARE\EXTI;..\HARDWARE\TIMER;..\HARDWARE\LCD;..\HARDWARE\MPU;..\HARDWARE\SDRAM;..\HARDWARE\TOUCH;..\HARDWARE\24CXX;..\HARDWARE\IIC;..\MALLOC;..\DSP_LIB\include;..\EMWIN\STemWin\inc;..\EMWIN\STemWin\Config;..\EMWIN\Demo;..\EMWIN\GUI</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -378,6 +348,7 @@
             <NoWarn>0</NoWarn>
             <uSurpInc>0</uSurpInc>
             <useXO>0</useXO>
+            <uClangAs>0</uClangAs>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define></Define>
@@ -766,6 +737,13 @@
                     <uSurpInc>2</uSurpInc>
                     <uC99>2</uC99>
                     <useXO>2</useXO>
+                    <v6Lang>0</v6Lang>
+                    <v6LangP>0</v6LangP>
+                    <vShortEn>2</vShortEn>
+                    <vShortWch>2</vShortWch>
+                    <v6Lto>0</v6Lto>
+                    <v6WtE>0</v6WtE>
+                    <v6Rtti>2</v6Rtti>
                     <VariousControls>
                       <MiscControls></MiscControls>
                       <Define></Define>
@@ -789,137 +767,12 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>EMWIN_DEMO</GroupName>
+          <GroupName>GUI</GroupName>
           <Files>
             <File>
-              <FileName>GUIDEMO.c</FileName>
+              <FileName>FramewinDLG.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\EMWIN\Demo\GUIDEMO.c</FilePath>
-            </File>
-            <File>
-              <FileName>GUIDEMO_AntialiasedText.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\EMWIN\Demo\GUIDEMO_AntialiasedText.c</FilePath>
-            </File>
-            <File>
-              <FileName>GUIDEMO_Automotive.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\EMWIN\Demo\GUIDEMO_Automotive.c</FilePath>
-            </File>
-            <File>
-              <FileName>GUIDEMO_BarGraph.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\EMWIN\Demo\GUIDEMO_BarGraph.c</FilePath>
-            </File>
-            <File>
-              <FileName>GUIDEMO_Bitmap.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\EMWIN\Demo\GUIDEMO_Bitmap.c</FilePath>
-            </File>
-            <File>
-              <FileName>GUIDEMO_ColorBar.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\EMWIN\Demo\GUIDEMO_ColorBar.c</FilePath>
-            </File>
-            <File>
-              <FileName>GUIDEMO_Conf.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\EMWIN\Demo\GUIDEMO_Conf.c</FilePath>
-            </File>
-            <File>
-              <FileName>GUIDEMO_Cursor.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\EMWIN\Demo\GUIDEMO_Cursor.c</FilePath>
-            </File>
-            <File>
-              <FileName>GUIDEMO_Fading.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\EMWIN\Demo\GUIDEMO_Fading.c</FilePath>
-            </File>
-            <File>
-              <FileName>GUIDEMO_Graph.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\EMWIN\Demo\GUIDEMO_Graph.c</FilePath>
-            </File>
-            <File>
-              <FileName>GUIDEMO_IconView.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\EMWIN\Demo\GUIDEMO_IconView.c</FilePath>
-            </File>
-            <File>
-              <FileName>GUIDEMO_ImageFlow.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\EMWIN\Demo\GUIDEMO_ImageFlow.c</FilePath>
-            </File>
-            <File>
-              <FileName>GUIDEMO_Intro.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\EMWIN\Demo\GUIDEMO_Intro.c</FilePath>
-            </File>
-            <File>
-              <FileName>GUIDEMO_Listview.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\EMWIN\Demo\GUIDEMO_Listview.c</FilePath>
-            </File>
-            <File>
-              <FileName>GUIDEMO_RadialMenu.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\EMWIN\Demo\GUIDEMO_RadialMenu.c</FilePath>
-            </File>
-            <File>
-              <FileName>GUIDEMO_Resource.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\EMWIN\Demo\GUIDEMO_Resource.c</FilePath>
-            </File>
-            <File>
-              <FileName>GUIDEMO_Skinning.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\EMWIN\Demo\GUIDEMO_Skinning.c</FilePath>
-            </File>
-            <File>
-              <FileName>GUIDEMO_Speed.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\EMWIN\Demo\GUIDEMO_Speed.c</FilePath>
-            </File>
-            <File>
-              <FileName>GUIDEMO_Speedometer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\EMWIN\Demo\GUIDEMO_Speedometer.c</FilePath>
-            </File>
-            <File>
-              <FileName>GUIDEMO_Start.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\EMWIN\Demo\GUIDEMO_Start.c</FilePath>
-            </File>
-            <File>
-              <FileName>GUIDEMO_Touch.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\EMWIN\Demo\GUIDEMO_Touch.c</FilePath>
-            </File>
-            <File>
-              <FileName>GUIDEMO_TransparentDialog.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\EMWIN\Demo\GUIDEMO_TransparentDialog.c</FilePath>
-            </File>
-            <File>
-              <FileName>GUIDEMO_Treeview.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\EMWIN\Demo\GUIDEMO_Treeview.c</FilePath>
-            </File>
-            <File>
-              <FileName>GUIDEMO_VScreen.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\EMWIN\Demo\GUIDEMO_VScreen.c</FilePath>
-            </File>
-            <File>
-              <FileName>GUIDEMO_WashingMachine.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\EMWIN\Demo\GUIDEMO_WashingMachine.c</FilePath>
-            </File>
-            <File>
-              <FileName>GUIDEMO_ZoomAndRotate.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\EMWIN\Demo\GUIDEMO_ZoomAndRotate.c</FilePath>
+              <FilePath>..\EMWIN\GUI\FramewinDLG.c</FilePath>
             </File>
           </Files>
         </Group>
