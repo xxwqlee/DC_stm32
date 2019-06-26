@@ -432,7 +432,7 @@ void HAL_TIM_Base_MspInit(TIM_HandleTypeDef *htim)
     else if(htim->Instance==TIM7)
     { 
         __HAL_RCC_TIM7_CLK_ENABLE();            //使能TIM7时钟
-        HAL_NVIC_SetPriority(TIM7_IRQn,2,3);    //设置中断优先级，抢占优先级2，子优先级0
+        HAL_NVIC_SetPriority(TIM7_IRQn,2,3);    //设置中断优先级，抢占优先级2，子优先级3
         HAL_NVIC_EnableIRQ(TIM7_IRQn);          //开启ITM7中断
     }    
 }
@@ -452,7 +452,7 @@ void TIM7_IRQHandler(void)
 //定时器10中断服务函数
 void TIM1_UP_TIM10_IRQHandler(void)
 {
-	HAL_TIM_IRQHandler(&TIM10_Handler);
+		HAL_TIM_IRQHandler(&TIM10_Handler);
 }
 
 //TIM6\7\10中断服务函数调用
