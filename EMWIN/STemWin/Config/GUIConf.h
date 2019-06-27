@@ -13,11 +13,11 @@
 //All rights reserved									  
 ////////////////////////////////////////////////////////////////////////////////// 
 
-#define GUI_NUM_LAYERS            1   	 	//最大支持1层
+#define GUI_NUM_LAYERS            1    //最大支持1层
 
 
-#define GUI_OS                    (0)  		// 使用操作系统
-#define GUI_SUPPORT_TOUCH         (1)  		// 支持触摸
+#define GUI_OS                    (1)  // 使用操作系统
+#define GUI_SUPPORT_TOUCH         (1)  // 支持触摸
 
 #define GUI_DEFAULT_FONT          &GUI_Font6x8	//默认字体
 #define GUI_SUPPORT_MOUSE         (1)    	//支持鼠标

@@ -17,9 +17,10 @@ SDRAM_HandleTypeDef SDRAM_Handler;   //SDRAM句柄
 //SDRAM初始化
 void SDRAM_Init(void)
 {
+    u32 temp=0;
     FMC_SDRAM_TimingTypeDef SDRAM_Timing;
                                                      
-    SDRAM_Handler.Instance=FMC_SDRAM_DEVICE;                                  //SDRAM在BANK5,6  
+    SDRAM_Handler.Instance=FMC_Bank5_6;                                  //SDRAM在BANK5,6  
     SDRAM_Handler.Init.SDBank=FMC_SDRAM_BANK1;                           //SDRAM接在BANK5上
     SDRAM_Handler.Init.ColumnBitsNumber=FMC_SDRAM_COLUMN_BITS_NUM_9;     //列数量
     SDRAM_Handler.Init.RowBitsNumber=FMC_SDRAM_ROW_BITS_NUM_13;          //行数量
@@ -39,15 +40,7 @@ void SDRAM_Init(void)
     SDRAM_Timing.RPDelay=2;                                             //行预充电延迟为2个时钟周期
     SDRAM_Timing.RCDDelay=2;                                            //行到列延迟为2个时钟周期
     HAL_SDRAM_Init(&SDRAM_Handler,&SDRAM_Timing);  
-	
-	SDRAM_Initialization_Sequence(&SDRAM_Handler);//发送SDRAM初始化序列
-   
-}
-
-//发送SDRAM初始化序列
-void SDRAM_Initialization_Sequence(SDRAM_HandleTypeDef *hsdram)
-{
-	u32 temp=0;
+    
     //SDRAM控制器初始化完成以后还需要按照如下顺序初始化SDRAM
     SDRAM_Send_Cmd(0,FMC_SDRAM_CMD_CLK_ENABLE,1,0); //时钟配置使能
     delay_us(500);                                  //至少延时200us
@@ -67,9 +60,9 @@ void SDRAM_Initialization_Sequence(SDRAM_HandleTypeDef *hsdram)
 	//COUNT=SDRAM刷新周期/行数-20=SDRAM刷新周期(us)*SDCLK频率(Mhz)/行数
     //我们使用的SDRAM刷新周期为64ms,SDCLK=216/2=108Mhz,行数为8192(2^13).
 	//所以,COUNT=64*1000*108/8192-20=823
-	HAL_SDRAM_ProgramRefreshRate(&SDRAM_Handler,823);	
+	HAL_SDRAM_ProgramRefreshRate(&SDRAM_Handler,823);
+}
 
-}	
 //SDRAM底层驱动，引脚配置，时钟使能
 //此函数会被HAL_SDRAM_Init()调用
 //hsdram:SDRAM句柄
@@ -92,18 +85,25 @@ void HAL_SDRAM_MspInit(SDRAM_HandleTypeDef *hsdram)
     GPIO_Initure.Alternate=GPIO_AF12_FMC;       //复用为FMC    
     HAL_GPIO_Init(GPIOC,&GPIO_Initure);         //初始化
     
+    //初始化PD0,1,8,9,10,14,15
+    GPIO_Initure.Pin=GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_8|GPIO_PIN_9|\
+                     GPIO_PIN_10|GPIO_PIN_14|GPIO_PIN_15;              
+    HAL_GPIO_Init(GPIOD,&GPIO_Initure); //初始化 
     
-    GPIO_Initure.Pin=GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10|GPIO_PIN_14|GPIO_PIN_15;              
-    HAL_GPIO_Init(GPIOD,&GPIO_Initure); //初始化PD0,1,8,9,10,14,15
+    //初始化PE0,1,7,8,9,10,11,12,13,14,15
+    GPIO_Initure.Pin=GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10|\
+                     GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15;              
+    HAL_GPIO_Init(GPIOE,&GPIO_Initure); //初始化
     
-    GPIO_Initure.Pin=GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10|GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15;              
-    HAL_GPIO_Init(GPIOE,&GPIO_Initure); //初始化PE0,1,7,8,9,10,11,12,13,14,15
+    //初始化PF0,1,2,3,4,5,11,12,13,14,15
+    GPIO_Initure.Pin=GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5|\
+                     GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15;              
+    HAL_GPIO_Init(GPIOF,&GPIO_Initure); //初始化
     
-    GPIO_Initure.Pin=GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15;              
-    HAL_GPIO_Init(GPIOF,&GPIO_Initure); //初始化PF0,1,2,3,4,5,11,12,13,14,15
-    
-    GPIO_Initure.Pin=GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_8|GPIO_PIN_15;              
-    HAL_GPIO_Init(GPIOG,&GPIO_Initure);	//初始化PG0,1,2,4,5,8,15 
+    //初始化PG0,1,2,4,5,8,15
+    GPIO_Initure.Pin=GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_4|\
+                     GPIO_PIN_5|GPIO_PIN_8|GPIO_PIN_15;              
+    HAL_GPIO_Init(GPIOG,&GPIO_Initure);  //初始化  
 }
 
 //向SDRAM发送命令

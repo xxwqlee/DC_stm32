@@ -91,6 +91,6 @@
 ..\obj\lcdconf_lin_template.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\lcdconf_lin_template.o: ..\EMWIN\STemWin\inc\WM_GUI.h
 ..\obj\lcdconf_lin_template.o: ..\HARDWARE\LED\led.h
+..\obj\lcdconf_lin_template.o: ..\HARDWARE\LCD\ltdc.h
 ..\obj\lcdconf_lin_template.o: ..\HARDWARE\LCD\tftlcd.h
 ..\obj\lcdconf_lin_template.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-..\obj\lcdconf_lin_template.o: ..\HARDWARE\LCD\ltdc.h

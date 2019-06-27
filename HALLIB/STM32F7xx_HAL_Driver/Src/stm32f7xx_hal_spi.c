@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32f7xx_hal_spi.c
   * @author  MCD Application Team
-  * @version V1.1.1
-  * @date    01-July-2016
+  * @version V1.1.0
+  * @date    22-April-2016
   * @brief   SPI HAL module driver.
   *          This file provides firmware functions to manage the following
   *          functionalities of the Serial Peripheral Interface (SPI) peripheral:
@@ -2162,65 +2162,60 @@ static void SPI_DMAReceiveCplt(DMA_HandleTypeDef *hdma)
 static void SPI_DMATransmitReceiveCplt(DMA_HandleTypeDef *hdma)
 {
   SPI_HandleTypeDef* hspi = ( SPI_HandleTypeDef* )((DMA_HandleTypeDef* )hdma)->Parent;
-  
+#if (USE_SPI_CRC != 0U)
+  __IO uint16_t tmpreg;
   /* CRC handling */
-  if((hdma->Instance->CR & DMA_SxCR_CIRC) == 0U)
+  if(hspi->Init.CRCCalculation == SPI_CRCCALCULATION_ENABLE)
   {
-#if (USE_SPI_CRC != 0U)
-    __IO uint16_t tmpreg;
-    /* CRC handling */
-    if(hspi->Init.CRCCalculation == SPI_CRCCALCULATION_ENABLE)
+    if((hspi->Init.DataSize == SPI_DATASIZE_8BIT) && (hspi->Init.CRCLength == SPI_CRC_LENGTH_8BIT))
     {
-      if((hspi->Init.DataSize == SPI_DATASIZE_8BIT) && (hspi->Init.CRCLength == SPI_CRC_LENGTH_8BIT))
+      if(SPI_WaitFifoStateUntilTimeout(hspi, SPI_FLAG_FRLVL, SPI_FRLVL_QUARTER_FULL, SPI_DEFAULT_TIMEOUT) != HAL_OK)
       {
-        if(SPI_WaitFifoStateUntilTimeout(hspi, SPI_FLAG_FRLVL, SPI_FRLVL_QUARTER_FULL, SPI_DEFAULT_TIMEOUT) != HAL_OK)
-        {
-          /* Error on the CRC reception */
-          hspi->ErrorCode|= HAL_SPI_ERROR_CRC;
-        }
-        tmpreg = *(__IO uint8_t *)&hspi->Instance->DR;
-        UNUSED(tmpreg); /* To avoid GCC warning */  
+        /* Error on the CRC reception */
+        hspi->ErrorCode|= HAL_SPI_ERROR_CRC;
       }
-      else
+      tmpreg = *(__IO uint8_t *)&hspi->Instance->DR;
+      UNUSED(tmpreg); /* To avoid GCC warning */
+    }
+    else
+    {
+      if(SPI_WaitFifoStateUntilTimeout(hspi, SPI_FLAG_FRLVL, SPI_FRLVL_HALF_FULL, SPI_DEFAULT_TIMEOUT) != HAL_OK)
       {
-        if(SPI_WaitFifoStateUntilTimeout(hspi, SPI_FLAG_FRLVL, SPI_FRLVL_HALF_FULL, SPI_DEFAULT_TIMEOUT) != HAL_OK)
-        {
-          /* Error on the CRC reception */
-          hspi->ErrorCode|= HAL_SPI_ERROR_CRC;
-        }
-        tmpreg = hspi->Instance->DR;
-        UNUSED(tmpreg); /* To avoid GCC warning */  
+        /* Error on the CRC reception */
+        hspi->ErrorCode|= HAL_SPI_ERROR_CRC;
       }
+      tmpreg = hspi->Instance->DR;
+      UNUSED(tmpreg); /* To avoid GCC warning */
     }
+  }
 #endif
-    
-    /* Check the end of the transaction */
-    if(SPI_EndRxTxTransaction(hspi,SPI_DEFAULT_TIMEOUT) != HAL_OK)
-    {
-      hspi->ErrorCode = HAL_SPI_ERROR_FLAG;
-    }
-    
-    /* Disable Rx/Tx DMA Request */
-    CLEAR_BIT(hspi->Instance->CR2, SPI_CR2_TXDMAEN | SPI_CR2_RXDMAEN);
-    
-    hspi->TxXferCount = 0;
-    hspi->RxXferCount = 0;
-    hspi->State = HAL_SPI_STATE_READY;
-    
+
+  /* Check the end of the transaction */
+  if(SPI_EndRxTxTransaction(hspi,SPI_DEFAULT_TIMEOUT) != HAL_OK)
+  {
+    hspi->ErrorCode = HAL_SPI_ERROR_FLAG;
+  }
+
+  /* Disable Rx/Tx DMA Request */
+  CLEAR_BIT(hspi->Instance->CR2, SPI_CR2_TXDMAEN | SPI_CR2_RXDMAEN);
+
+  hspi->TxXferCount = 0;
+  hspi->RxXferCount = 0;
+  hspi->State = HAL_SPI_STATE_READY;
+
 #if (USE_SPI_CRC != 0U)
-    /* Check if CRC error occurred */
-    if(__HAL_SPI_GET_FLAG(hspi, SPI_FLAG_CRCERR) != RESET)
-    {
-      hspi->ErrorCode|= HAL_SPI_ERROR_CRC;
-      __HAL_SPI_CLEAR_CRCERRFLAG(hspi);
-    }
+  /* Check if CRC error occurred */
+  if(__HAL_SPI_GET_FLAG(hspi, SPI_FLAG_CRCERR) != RESET)
+  {
+    hspi->ErrorCode|= HAL_SPI_ERROR_CRC;
+    __HAL_SPI_CLEAR_CRCERRFLAG(hspi);
+  }
 #endif
-    
-    if(hspi->ErrorCode != HAL_SPI_ERROR_NONE)
-    {
-      HAL_SPI_ErrorCallback(hspi);
-      return;
-    }
+
+  if(hspi->ErrorCode != HAL_SPI_ERROR_NONE)
+  {
+    HAL_SPI_ErrorCallback(hspi);
+    return;
   }
   HAL_SPI_TxRxCpltCallback(hspi);
 }

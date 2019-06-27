@@ -11,7 +11,7 @@
 ..\obj\lcdconf_flexcolor_template.o: ..\USER\stm32f7xx.h
 ..\obj\lcdconf_flexcolor_template.o: ..\USER\stm32f767xx.h
 ..\obj\lcdconf_flexcolor_template.o: ..\CORE\core_cm7.h
-..\obj\lcdconf_flexcolor_template.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\lcdconf_flexcolor_template.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\lcdconf_flexcolor_template.o: ..\CORE\core_cmInstr.h
 ..\obj\lcdconf_flexcolor_template.o: ..\CORE\cmsis_armcc.h
 ..\obj\lcdconf_flexcolor_template.o: ..\CORE\core_cmFunc.h
@@ -22,7 +22,7 @@
 ..\obj\lcdconf_flexcolor_template.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h
 ..\obj\lcdconf_flexcolor_template.o: ..\USER\stm32f7xx.h
 ..\obj\lcdconf_flexcolor_template.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h
-..\obj\lcdconf_flexcolor_template.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\lcdconf_flexcolor_template.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\lcdconf_flexcolor_template.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc_ex.h
 ..\obj\lcdconf_flexcolor_template.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio.h
 ..\obj\lcdconf_flexcolor_template.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio_ex.h
@@ -84,7 +84,7 @@
 ..\obj\lcdconf_flexcolor_template.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_mdios.h
 ..\obj\lcdconf_flexcolor_template.o: ..\CORE\core_cm7.h
 ..\obj\lcdconf_flexcolor_template.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h
-..\obj\lcdconf_flexcolor_template.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
+..\obj\lcdconf_flexcolor_template.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\lcdconf_flexcolor_template.o: ..\HARDWARE\TOUCH\touch.h
 ..\obj\lcdconf_flexcolor_template.o: ..\HARDWARE\TOUCH\ott2001a.h
 ..\obj\lcdconf_flexcolor_template.o: ..\HARDWARE\TOUCH\gt9147.h

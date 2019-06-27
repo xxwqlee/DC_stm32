@@ -1,8 +1,8 @@
 ;******************** (C) COPYRIGHT 2016 STMicroelectronics ********************
 ;* File Name          : startup_stm32f767xx.s
 ;* Author             : MCD Application Team
-;* Version            : V1.1.1
-;* Date               : 01-July-2016
+;* Version            : V1.1.0
+;* Date               : 22-April-2016
 ;* Description        : STM32F767xx devices vector table for MDK-ARM toolchain. 
 ;*                      This module performs:
 ;*                      - Set the initial SP
@@ -45,7 +45,7 @@
 ;   <o> Stack Size (in Bytes) <0x0-0xFFFFFFFF:8>
 ; </h>
 
-Stack_Size      EQU     0xA00
+Stack_Size      EQU     0x00000A00
 
                 AREA    STACK, NOINIT, READWRITE, ALIGN=3
 Stack_Mem       SPACE   Stack_Size
@@ -215,6 +215,25 @@ Reset_Handler    PROC
 
                  LDR     R0, =SystemInit
                  BLX     R0
+				 
+				 IF {FPU} != "SoftVFP"
+                                                ; Enable Floating Point Support at reset for FPU
+                 LDR.W   R0, =0xE000ED88         ; Load address of CPACR register
+                 LDR     R1, [R0]                ; Read value at CPACR
+                 ORR     R1,  R1, #(0xF <<20)    ; Set bits 20-23 to enable CP10 and CP11 coprocessors
+                                                ; Write back the modified CPACR value
+                 STR     R1, [R0]                ; Wait for store to complete
+                 DSB
+                
+                                                ; Disable automatic FP register content
+                                                ; Disable lazy context switch
+                 LDR.W   R0, =0xE000EF34         ; Load address to FPCCR register
+                 LDR     R1, [R0]
+                 AND     R1,  R1, #(0x3FFFFFFF)  ; Clear the LSPEN and ASPEN bits
+                 STR     R1, [R0]
+                 ISB                             ; Reset pipeline now the FPU is enabled
+                 ENDIF 
+					 
                  LDR     R0, =__main
                  BX      R0
                  ENDP

@@ -68,28 +68,28 @@ void HAL_QSPI_MspInit(QSPI_HandleTypeDef *hqspi)
 }
 
 //QSPI发送命令
-//instruction:要发送的指令
-//address:发送到的目的地址
-//dummyCycles:空指令周期数
-//	instructionMode:指令模式;QSPI_INSTRUCTION_NONE,QSPI_INSTRUCTION_1_LINE,QSPI_INSTRUCTION_2_LINE,QSPI_INSTRUCTION_4_LINE  
-//	addressMode:地址模式; QSPI_ADDRESS_NONE,QSPI_ADDRESS_1_LINE,QSPI_ADDRESS_2_LINE,QSPI_ADDRESS_4_LINE
-//	addressSize:地址长度;QSPI_ADDRESS_8_BITS,QSPI_ADDRESS_16_BITS,QSPI_ADDRESS_24_BITS,QSPI_ADDRESS_32_BITS
-//	dataMode:数据模式; QSPI_DATA_NONE,QSPI_DATA_1_LINE,QSPI_DATA_2_LINE,QSPI_DATA_4_LINE
-
-void QSPI_Send_CMD(u32 instruction,u32 address,u32 dummyCycles,u32 instructionMode,u32 addressMode,u32 addressSize,u32 dataMode)
+//cmd:要发送的指令
+//addr:发送到的目的地址
+//mode:模式,详细位定义如下:
+//	mode[1:0]:指令模式;00,无指令;01,单线传输指令;10,双线传输指令;11,四线传输指令.
+//	mode[3:2]:地址模式;00,无地址;01,单线传输地址;10,双线传输地址;11,四线传输地址.
+//	mode[5:4]:地址长度;00,8位地址;01,16位地址;10,24位地址;11,32位地址.
+//	mode[7:6]:数据模式;00,无数据;01,单线传输数据;10,双线传输数据;11,四线传输数据.
+//dmcycle:空指令周期数
+void QSPI_Send_CMD(u8 cmd,u32 addr,u8 mode,u8 dmcycle)
 {
     QSPI_CommandTypeDef Cmdhandler;
     
-    Cmdhandler.Instruction=instruction;                 	//指令
-    Cmdhandler.Address=address;                            	//地址
-    Cmdhandler.DummyCycles=dummyCycles;                     //设置空指令周期数
-    Cmdhandler.InstructionMode=instructionMode;				//指令模式
-    Cmdhandler.AddressMode=addressMode;   					//地址模式
-    Cmdhandler.AddressSize=addressSize;   					//地址长度
-    Cmdhandler.DataMode=dataMode;             				//数据模式
-    Cmdhandler.SIOOMode=QSPI_SIOO_INST_EVERY_CMD;       	//每次都发送指令
+    Cmdhandler.Instruction=cmd;                         //指令
+    Cmdhandler.Address=addr;                            //地址
+    Cmdhandler.DummyCycles=dmcycle;                     //设置空指令周期数
+    Cmdhandler.InstructionMode=((u32)(mode>>0)&0X03)<<8;//指令模式
+    Cmdhandler.AddressMode=((u32)(mode>>2)&0X03)<<10;   //地址模式
+    Cmdhandler.AddressSize=((u32)(mode>>4)&0X03)<<12;   //地址长度
+    Cmdhandler.DataMode=((u32)mode>>6)<<24;             //数据模式
+    Cmdhandler.SIOOMode=QSPI_SIOO_INST_EVERY_CMD;       //每次都发送指令
     Cmdhandler.AlternateByteMode=QSPI_ALTERNATE_BYTES_NONE; //无交替字节
-    Cmdhandler.DdrMode=QSPI_DDR_MODE_DISABLE;           	//关闭DDR模式
+    Cmdhandler.DdrMode=QSPI_DDR_MODE_DISABLE;           //关闭DDR模式
     Cmdhandler.DdrHoldHalfCycle=QSPI_DDR_HHC_ANALOG_DELAY;
 
     HAL_QSPI_Command(&QSPI_Handler,&Cmdhandler,5000);

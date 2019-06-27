@@ -20,7 +20,6 @@ void Cache_Enable(void)
 {
     SCB_EnableICache();//使能I-Cache
     SCB_EnableDCache();//使能D-Cache    
-	SCB->CACR|=1<<2;   //强制D-Cache透写,如不开启,实际使用中可能遇到各种问题
 }
 //时钟设置函数
 //Fvco=Fs*(plln/pllm);

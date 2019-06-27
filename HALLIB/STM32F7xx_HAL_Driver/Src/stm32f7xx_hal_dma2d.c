@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32f7xx_hal_dma2d.c
   * @author  MCD Application Team
-  * @version V1.1.1
-  * @date    01-July-2016
+  * @version V1.1.0
+  * @date    22-April-2016
   * @brief   DMA2D HAL module driver.
   *          This file provides firmware functions to manage the following 
   *          functionalities of the DMA2D peripheral:
@@ -589,8 +589,8 @@ HAL_StatusTypeDef HAL_DMA2D_Abort(DMA2D_HandleTypeDef *hdma2d)
 
   /* Abort the DMA2D transfer */
   /* START bit is reset to make sure not to set it again, in the event the HW clears it
-     between the register read and the register write by the CPU (writing 0 has no 
-     effect on START bitvalue) */
+     between the register read and the register write by the CPU (writing ‘0’ has no 
+     effect on START bitvalue). */
    MODIFY_REG(hdma2d->Instance->CR, DMA2D_CR_ABORT|DMA2D_CR_START, DMA2D_CR_ABORT);
 
   /* Get tick */
@@ -638,7 +638,7 @@ HAL_StatusTypeDef HAL_DMA2D_Suspend(DMA2D_HandleTypeDef *hdma2d)
 
   /* Suspend the DMA2D transfer */
   /* START bit is reset to make sure not to set it again, in the event the HW clears it
-     between the register read and the register write by the CPU (writing 0 has no 
+     between the register read and the register write by the CPU (writing ‘0’ has no 
      effect on START bitvalue). */
   MODIFY_REG(hdma2d->Instance->CR, DMA2D_CR_SUSP|DMA2D_CR_START, DMA2D_CR_SUSP);
 
@@ -693,7 +693,7 @@ HAL_StatusTypeDef HAL_DMA2D_Resume(DMA2D_HandleTypeDef *hdma2d)
 
   /* Resume the DMA2D transfer */
   /* START bit is reset to make sure not to set it again, in the event the HW clears it
-     between the register read and the register write by the CPU (writing 0 has no 
+     between the register read and the register write by the CPU (writing ‘0’ has no 
      effect on START bitvalue). */
   CLEAR_BIT(hdma2d->Instance->CR, (DMA2D_CR_SUSP|DMA2D_CR_START));  
 

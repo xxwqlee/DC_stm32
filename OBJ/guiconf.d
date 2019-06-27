@@ -11,7 +11,7 @@
 ..\obj\guiconf.o: ..\USER\stm32f7xx.h
 ..\obj\guiconf.o: ..\USER\stm32f767xx.h
 ..\obj\guiconf.o: ..\CORE\core_cm7.h
-..\obj\guiconf.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\guiconf.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\guiconf.o: ..\CORE\core_cmInstr.h
 ..\obj\guiconf.o: ..\CORE\cmsis_armcc.h
 ..\obj\guiconf.o: ..\CORE\core_cmFunc.h
@@ -22,7 +22,7 @@
 ..\obj\guiconf.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h
 ..\obj\guiconf.o: ..\USER\stm32f7xx.h
 ..\obj\guiconf.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h
-..\obj\guiconf.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\guiconf.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\guiconf.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc_ex.h
 ..\obj\guiconf.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio.h
 ..\obj\guiconf.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio_ex.h
