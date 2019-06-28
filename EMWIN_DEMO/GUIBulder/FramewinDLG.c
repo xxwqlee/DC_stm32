@@ -24,6 +24,7 @@
 #include "DIALOG.h"
 #include "led.h"
 #include "GUI.h"
+#include "Timer.h"
 
 /*********************************************************************
 *
@@ -59,6 +60,10 @@
 */
 
 // USER START (Optionally insert additional static data)
+static u8 ConfirmFlag; //声明Confirmbox的全局变量
+static u8 ReverseFlag; //声明ReverseBox的全局变量
+static u8 drill_depth; //钻孔深度
+const double eps = 1e-3;
 // USER END
 
 /*********************************************************************
@@ -88,30 +93,56 @@ static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
 /*********************************************************************
 *
 *       Static code
+
 *
 **********************************************************************
 */
 
 // USER START (Optionally insert additional static code)
+//编码器读数转化为角度
+double count_to_angle(u16 count)
+{
+	double angle = 0.0;
+	angle = count / 10000 * 360;
+	return angle;
+}
+
+
 // USER END
+
 
 /*********************************************************************
 *
 *       _cbDialog
 */
 static void _cbDialog(WM_MESSAGE * pMsg) {
-  WM_HWIN hItem, hDlg;
+  WM_HWIN hItem;
   int     NCode;
   int     Id;
+	u16 count1 = 0;
+	u16 count2 = 0;
+	u16 count3 = 0;
+	u16 count4 = 0;
+	u16 count5 = 0;	
+	double angle1 = 123.12312;
+	double angle2 = -0.444;
+	double angle3 = 123.4111;
+	double angle4 = 1.323;
+	double angle5 = 13.0121;
+	char joint_angle1[6]; 
+	char joint_angle2[6]; 
+	char joint_angle3[6];
+	char joint_angle4[6]; 
+	char joint_angle5[6];
   // USER START (Optionally insert additional variables)
   // USER END
-	hDlg = pMsg->MsgId;
   switch (pMsg->MsgId) {
   case WM_INIT_DIALOG:
     //
     // Initialization of 'Framewin'
     //
     hItem = pMsg->hWin;
+		
     FRAMEWIN_SetText(hItem, "Framewin");
     FRAMEWIN_SetTitleVis(hItem, 0);
     FRAMEWIN_SetTextAlign(hItem, GUI_TA_HCENTER | GUI_TA_VCENTER);
@@ -169,12 +200,14 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
     hItem = WM_GetDialogItem(pMsg->hWin, ID_CHECKBOX_0);
     CHECKBOX_SetText(hItem, "Depth Confirm");
     CHECKBOX_SetFont(hItem, GUI_FONT_20_ASCII);
+		ConfirmFlag = 0; //默认Confrim 没有选中
     //
     // Initialization of 'Checkbox2'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_CHECKBOX_1);
     CHECKBOX_SetText(hItem, "Reverse Direction");
     CHECKBOX_SetFont(hItem, GUI_FONT_20_ASCII);
+		ReverseFlag = 0; //默认Reverse 没有选中
     //
     // Initialization of 'Button4'
     //
@@ -198,6 +231,23 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
     //
     // Initialization of 'Listview'
     //
+		count1=__HAL_TIM_GET_COUNTER(&TIM1_Handler);
+		count2=__HAL_TIM_GET_COUNTER(&TIM2_Handler);
+		count3=__HAL_TIM_GET_COUNTER(&TIM3_Handler);
+		count4=__HAL_TIM_GET_COUNTER(&TIM4_Handler);
+		count5=__HAL_TIM_GET_COUNTER(&TIM5_Handler);
+		angle1 = count_to_angle(count1);
+		angle2 = count_to_angle(count2);
+		angle3 = count_to_angle(count3);
+		angle4 = count_to_angle(count4);
+		angle5 = count_to_angle(count5);
+		//小数转字符串
+		sprintf(&joint_angle1[0], "%6.2f", angle1);
+		sprintf(&joint_angle2[0], "%6.2f", angle2);
+		sprintf(&joint_angle3[0], "%6.2f", angle3);
+		sprintf(&joint_angle4[0], "%6.2f", angle4);
+		sprintf(&joint_angle5[0], "%6.2f", angle5);
+		
     hItem = WM_GetDialogItem(pMsg->hWin, ID_LISTVIEW_0);
     LISTVIEW_AddColumn(hItem, 100, "number of joints", GUI_TA_HCENTER | GUI_TA_VCENTER);
     LISTVIEW_SetGridVis(hItem, 1);
@@ -214,8 +264,14 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
     LISTVIEW_SetItemText(hItem, 0, 2, "joint3");
     LISTVIEW_SetItemText(hItem, 0, 3, "joint4");
     LISTVIEW_SetItemText(hItem, 0, 4, "joint5");
+		LISTVIEW_SetItemText(hItem, 1, 0, &joint_angle1[0]);
+    LISTVIEW_SetItemText(hItem, 1, 1, &joint_angle2[0]);
+    LISTVIEW_SetItemText(hItem, 1, 2, &joint_angle3[0]);
+    LISTVIEW_SetItemText(hItem, 1, 3, &joint_angle4[0]);
+    LISTVIEW_SetItemText(hItem, 1, 4, &joint_angle5[0]);
     LISTVIEW_SetFont(hItem, GUI_FONT_20_ASCII);
     LISTVIEW_SetItemBkColor(hItem, 0, 0, LISTVIEW_CI_UNSEL, GUI_MAKE_COLOR(0x00FFFFFF));
+		
     // USER START (Optionally insert additional code for further widget initialization)
     // USER END
     break;
@@ -252,6 +308,11 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         // USER START (Optionally insert code for reacting on notification message)
 //				LED0_Toggle;
 				LED1_Toggle;
+				TIM_SetTIM8Compare1(10);
+				TIM_SetTIM8Compare2(10);
+				TIM_SetTIM8Compare3(10);
+				TIM_SetTIM8Compare4(10);
+				TIM_SetTIM9Compare1(10);
         // USER END
         break;
       // USER START (Optionally insert additional code for further notification handling)
@@ -267,11 +328,14 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         break;
       case WM_NOTIFICATION_RELEASED:
         // USER START (Optionally insert code for reacting on notification message)
-				hItem = WM_GetDialogItem(hDlg, ID_CHECKBOX_0);	//获取CHECKBOX的句柄
-				if(CHECKBOX_IsChecked(hItem)) 
-				{
-					LED1_Toggle;   //如果复选框1被选中，LED1反转
-				}
+//				hItem = WM_GetDialogItem(hDlg, ID_CHECKBOX_0);	//获取CHECKBOX的句柄
+				if(ConfirmFlag) LED1_Toggle;   //如果复选框1被选中，LED1反转
+				
+				TIM_SetTIM8Compare1(10);
+				TIM_SetTIM8Compare2(10);
+				TIM_SetTIM8Compare3(10);
+				TIM_SetTIM8Compare4(10);
+				TIM_SetTIM9Compare1(10);
         // USER END
         break;
       // USER START (Optionally insert additional code for further notification handling)
@@ -286,6 +350,11 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         break;
       case WM_NOTIFICATION_RELEASED:
         // USER START (Optionally insert code for reacting on notification message)
+				TIM_SetTIM8Compare1(10);
+				TIM_SetTIM8Compare2(10);
+				TIM_SetTIM8Compare3(10);
+				TIM_SetTIM8Compare4(10);
+				TIM_SetTIM9Compare1(10);
         // USER END
         break;
       // USER START (Optionally insert additional code for further notification handling)
@@ -308,6 +377,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         break;
       case WM_NOTIFICATION_VALUE_CHANGED:
         // USER START (Optionally insert code for reacting on notification message)
+				drill_depth = SPINBOX_GetValue(pMsg->hWinSrc);
         // USER END
         break;
       // USER START (Optionally insert additional code for further notification handling)
@@ -322,10 +392,13 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         break;
       case WM_NOTIFICATION_RELEASED:
         // USER START (Optionally insert code for reacting on notification message)
+				
         // USER END
         break;
       case WM_NOTIFICATION_VALUE_CHANGED:
         // USER START (Optionally insert code for reacting on notification message)
+				if (ConfirmFlag)ConfirmFlag = 0;
+			  else ConfirmFlag = 1; 
         // USER END
         break;
       // USER START (Optionally insert additional code for further notification handling)
@@ -344,6 +417,8 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         break;
       case WM_NOTIFICATION_VALUE_CHANGED:
         // USER START (Optionally insert code for reacting on notification message)
+				if (ReverseFlag)ReverseFlag = 0;
+			  else ReverseFlag = 1;
         // USER END
         break;
       // USER START (Optionally insert additional code for further notification handling)
@@ -358,6 +433,11 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         break;
       case WM_NOTIFICATION_RELEASED:
         // USER START (Optionally insert code for reacting on notification message)
+				if(ConfirmFlag) 
+				{
+					LED1_Toggle;   //如果复选框1被选中，LED1反转
+					SendPulse(drill_depth);
+				}
         // USER END
         break;
       // USER START (Optionally insert additional code for further notification handling)

@@ -122,3 +122,4 @@
 ..\obj\framewindlg.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_mdios.h
 ..\obj\framewindlg.o: ..\CORE\core_cm7.h
 ..\obj\framewindlg.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h
+..\obj\framewindlg.o: ..\HARDWARE\TIMER\Timer.h

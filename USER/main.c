@@ -76,13 +76,7 @@ CPU_STK EMWINDEMO_TASK_STK[EMWINDEMO_STK_SIZE];
 //emwindemo_task任务
 void emwindemo_task(void *p_arg);
 
-//编码器读数转化为角度
-double count_to_angle(u16 count)
-{
-	double angle = 0.0;
-	angle = count / 10000 * 360;
-	return angle;
-}
+
 
 int main(void)
 {  
@@ -213,16 +207,7 @@ void start_task(void *p_arg)
 //EMWINDEMO任务
 void emwindemo_task(void *p_arg)
 {
-	u16 count1 = 0;
-	u16 count2 = 0;
-	u16 count3 = 0;
-	u16 count4 = 0;
-	u16 count5 = 0;	
-	double angle1 = 0.0;
-	double angle2 = 0.0;
-	double angle3 = 0.0;
-	double angle4 = 0.0;
-	double angle5 = 0.0;
+	
 	//更换皮肤
 	BUTTON_SetDefaultSkin(BUTTON_SKIN_FLEX); 
 	CHECKBOX_SetDefaultSkin(CHECKBOX_SKIN_FLEX);
@@ -239,26 +224,6 @@ void emwindemo_task(void *p_arg)
 	CreateFramewin();
 	while(1)
 	{
-		count1=__HAL_TIM_GET_COUNTER(&TIM1_Handler);
-		count2=__HAL_TIM_GET_COUNTER(&TIM2_Handler);
-		count3=__HAL_TIM_GET_COUNTER(&TIM3_Handler);
-		count4=__HAL_TIM_GET_COUNTER(&TIM4_Handler);
-		count5=__HAL_TIM_GET_COUNTER(&TIM5_Handler);
-		angle1 = count_to_angle(count1);
-		angle2 = count_to_angle(count2);
-		angle3 = count_to_angle(count3);
-		angle4 = count_to_angle(count4);
-		angle5 = count_to_angle(count5);
-		GUI_GotoXY(85, 550);
-		GUI_DispSFloatFix(angle1,6,1);
-		GUI_GotoXY(85, 600);
-		GUI_DispSFloatFix(angle2,6,1);
-		GUI_GotoXY(85, 650);
-		GUI_DispSFloatFix(angle3,6,1);
-		GUI_GotoXY(85, 700);
-		GUI_DispSFloatFix(angle4,6,1);
-		GUI_GotoXY(85, 750);
-		GUI_DispSFloatFix(angle5,6,1);
 		GUI_Delay(100);
 	}
 }
