@@ -482,8 +482,8 @@ void HAL_LTDC_MspInit(LTDC_HandleTypeDef* hltdc)
     GPIO_Initure.Pin=GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_11;
     HAL_GPIO_Init(GPIOG,&GPIO_Initure);
     
-    //初始化PH9,10,11,12,13,14,15
-    GPIO_Initure.Pin=GPIO_PIN_9|GPIO_PIN_10|GPIO_PIN_11|\
+    //初始化PH8,9,10,11,12,13,14,15
+    GPIO_Initure.Pin=GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10|GPIO_PIN_11|\
                      GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15;
     HAL_GPIO_Init(GPIOH,&GPIO_Initure);
     

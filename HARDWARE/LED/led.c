@@ -25,7 +25,7 @@ void LED_Init(void)
     GPIO_Initure.Speed=GPIO_SPEED_HIGH;     //∏ﬂÀŸ
     HAL_GPIO_Init(GPIOB,&GPIO_Initure);
 	
-    HAL_GPIO_WritePin(GPIOB,GPIO_PIN_0,GPIO_PIN_SET);	//PB1÷√0
-	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,GPIO_PIN_SET);	//PB1÷√1 
+    HAL_GPIO_WritePin(GPIOB,GPIO_PIN_0,GPIO_PIN_RESET);	//PB1÷√0
+		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,GPIO_PIN_RESET);	//PB1÷√1 
 }
 

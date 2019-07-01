@@ -2,9 +2,9 @@
 #include "delay.h"
 #include "usart.h"
 #include "led.h"
-#include "key.h"
+//#include "key.h"
 #include "timer.h"
-#include "exti.h"
+//#include "exti.h"
 #include "sdram.h"
 #include "tftlcd.h"
 #include "ltdc.h"
@@ -91,7 +91,7 @@ int main(void)
 	HAL_Init();				        //初始化HAL库
 	delay_init(216);                //延时初始化
 	uart2_init(115200);		        //串口初始化
-	EXTI_Init();                     //按键初始化
+//	EXTI_Init();                     //按键初始化
 	LED_Init();                     //初始化LED
 	SDRAM_Init();                   //SDRAM初始化
 	TFTLCD_Init();                  //初始化LCD
@@ -222,10 +222,6 @@ void emwindemo_task(void *p_arg)
 	SLIDER_SetDefaultSkin(SLIDER_SKIN_FLEX);
 	SPINBOX_SetDefaultSkin(SPINBOX_SKIN_FLEX);
 	CreateFramewin();
-	while(1)
-	{
-		GUI_Delay(100);
-	}
 }
 
 //TOUCH任务
@@ -243,9 +239,20 @@ void touch_task(void *p_arg)
 void led0_task(void *p_arg)
 {
 	OS_ERR err;
+	u16 count1 = 0;
+	u16 count2 = 0;
+	u16 count3 = 0;
+	u16 count4 = 0;
+	u16 count5 = 0;
 	while(1)
 	{
-		LED0_Toggle;
+//		LED0_Toggle;
+		count1=__HAL_TIM_GET_COUNTER(&TIM1_Handler);
+		count2=__HAL_TIM_GET_COUNTER(&TIM2_Handler);
+		count3=__HAL_TIM_GET_COUNTER(&TIM3_Handler);
+		count4=__HAL_TIM_GET_COUNTER(&TIM4_Handler);
+		count5=__HAL_TIM_GET_COUNTER(&TIM5_Handler);
+		printf("%d  %d  %d  %d  %d\n", count1, count2, count3, count4, count5);
 		OSTimeDlyHMSM(0,0,0,500,OS_OPT_TIME_PERIODIC,&err);//延时500ms
 	}
 }

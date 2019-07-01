@@ -3,16 +3,16 @@
 #include "GUI.h"
 //////////////////////////////////////////////////////////////////////////////////	 
 //TIM1-5（CH1、CH2）读取编码器角度
-//TIM1：（AF1）PA8、9
+//TIM1：（AF1）PA8\9
 //TIM2：（AF1）PA15、PB3
-//TIM3：（AF2）PB4、5
+//TIM3：（AF2）PA6\7
 //TIM4：（AF2）PB6\7
-//TIM5：（AF2）PH10、11
+//TIM5：（AF2）PH10\11
 
 //TIM8（CH1、2、3、4/PC6\7\8\9）TIM9（CH1/PE5）成PWM控制信号（0-3.3V）对应占空比（0-100%）
 
-//TIM6触摸屏计时
-//TIM7触摸屏扫描
+//TIM6触摸屏计时(弃用)
+//TIM7触摸屏扫描(弃用)
 
 //
 ////////////////////////////////////////////////////////////////////////////////// 	 
@@ -202,26 +202,26 @@ void HAL_TIM_Encoder_MspInit(TIM_HandleTypeDef *htim)
 	else if(htim->Instance==TIM3)   
   {
 		__HAL_RCC_TIM3_CLK_ENABLE();                  //使能定时器3
-		__HAL_RCC_GPIOB_CLK_ENABLE();		              //开启GPIOB时钟
+		__HAL_RCC_GPIOA_CLK_ENABLE();		              //开启GPIOA时钟
 	
-		GPIO_Initure.Pin=GPIO_PIN_4|GPIO_PIN_5;       //PB4/5
+		GPIO_Initure.Pin=GPIO_PIN_6|GPIO_PIN_7;       //PA6/7
     GPIO_Initure.Mode=GPIO_MODE_AF_PP;  	        //复用推挽
     GPIO_Initure.Pull=GPIO_PULLUP;        		    //上拉
     GPIO_Initure.Speed=GPIO_SPEED_HIGH;     	    //高速
 		GPIO_Initure.Alternate=GPIO_AF2_TIM3;
-    HAL_GPIO_Init(GPIOB,&GPIO_Initure);
+    HAL_GPIO_Init(GPIOA,&GPIO_Initure);
   }
 	else if(htim->Instance==TIM5)
   {
 		__HAL_RCC_TIM5_CLK_ENABLE();                    //使能定时器5
-		__HAL_RCC_GPIOH_CLK_ENABLE();		            //开启GPIOH时钟
+		__HAL_RCC_GPIOA_CLK_ENABLE();		            //开启GPIOH时钟
 	
-		GPIO_Initure.Pin=GPIO_PIN_10|GPIO_PIN_11;       //PH10,PH11
+		GPIO_Initure.Pin=GPIO_PIN_0|GPIO_PIN_1;       //PA0\1
     GPIO_Initure.Mode=GPIO_MODE_AF_PP;  	        //复用推挽
     GPIO_Initure.Pull=GPIO_PULLUP;        		   	//上拉
     GPIO_Initure.Speed=GPIO_SPEED_HIGH;     		//高速
-		GPIO_Initure.Alternate=GPIO_AF2_TIM5;			//PH10,11复用为TIM5_CH1,2
-    HAL_GPIO_Init(GPIOH,&GPIO_Initure);
+		GPIO_Initure.Alternate=GPIO_AF2_TIM5;			
+    HAL_GPIO_Init(GPIOA,&GPIO_Initure);
   }
 }
 
@@ -249,24 +249,24 @@ void TIM8_PWM_Init(u16 arr,u16 psc)
 		TIM8_CH1Handler.OCNIdleState = TIM_OCNIDLESTATE_RESET;
 	
 		TIM8_CH2Handler.OCMode=TIM_OCMODE_PWM1; //模式选择PWM1
-    TIM8_CH2Handler.Pulse=arr/3;            //设置比较值,此值用来确定占空比，
-                                            //默认比较值为自动重装载值的一半,即占空比为33%
+    TIM8_CH2Handler.Pulse=arr/2;            //设置比较值,此值用来确定占空比，
+                                            //默认比较值为自动重装载值的一半,即占空比为50%
     TIM8_CH2Handler.OCPolarity=TIM_OCPOLARITY_HIGH; //输出比较极性为高
 		TIM8_CH2Handler.OCFastMode = TIM_OCFAST_DISABLE;
 		TIM8_CH2Handler.OCIdleState = TIM_OCIDLESTATE_RESET;
 		TIM8_CH2Handler.OCNIdleState = TIM_OCNIDLESTATE_RESET;
 	
 		TIM8_CH3Handler.OCMode=TIM_OCMODE_PWM1; //模式选择PWM1
-    TIM8_CH3Handler.Pulse=arr/4;            //设置比较值,此值用来确定占空比，
-                                            //默认比较值为自动重装载值的一半,即占空比为25%
+    TIM8_CH3Handler.Pulse=arr/2;            //设置比较值,此值用来确定占空比，
+                                            //默认比较值为自动重装载值的一半,即占空比为50%
     TIM8_CH3Handler.OCPolarity=TIM_OCPOLARITY_HIGH; //输出比较极性为高
 		TIM8_CH3Handler.OCFastMode = TIM_OCFAST_DISABLE;
 		TIM8_CH3Handler.OCIdleState = TIM_OCIDLESTATE_RESET;
 		TIM8_CH3Handler.OCNIdleState = TIM_OCNIDLESTATE_RESET;
 		
 		TIM8_CH4Handler.OCMode=TIM_OCMODE_PWM1; //模式选择PWM1
-    TIM8_CH4Handler.Pulse=arr/5;            //设置比较值,此值用来确定占空比，
-                                            //默认比较值为自动重装载值的一半,即占空比为20%
+    TIM8_CH4Handler.Pulse=arr/2;            //设置比较值,此值用来确定占空比，
+                                            //默认比较值为自动重装载值的一半,即占空比为50%
     TIM8_CH4Handler.OCPolarity=TIM_OCPOLARITY_HIGH; //输出比较极性为高
 		TIM8_CH4Handler.OCFastMode = TIM_OCFAST_DISABLE;
 		TIM8_CH4Handler.OCIdleState = TIM_OCIDLESTATE_RESET;

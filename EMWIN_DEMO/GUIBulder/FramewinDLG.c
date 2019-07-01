@@ -61,9 +61,7 @@
 
 // USER START (Optionally insert additional static data)
 static u8 ConfirmFlag; //声明Confirmbox的全局变量
-static u8 ReverseFlag; //声明ReverseBox的全局变量
 static u8 drill_depth; //钻孔深度
-const double eps = 1e-3;
 // USER END
 
 /*********************************************************************
@@ -103,7 +101,9 @@ static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
 double count_to_angle(u16 count)
 {
 	double angle = 0.0;
-	angle = count / 10000 * 360;
+//	if(count > 65535/2)count -= 65535;
+	if(count > 65535/2)count = 65535 - count;
+	angle = (double)count / 10000 * 360;
 	return angle;
 }
 
@@ -207,7 +207,6 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
     hItem = WM_GetDialogItem(pMsg->hWin, ID_CHECKBOX_1);
     CHECKBOX_SetText(hItem, "Reverse Direction");
     CHECKBOX_SetFont(hItem, GUI_FONT_20_ASCII);
-		ReverseFlag = 0; //默认Reverse 没有选中
     //
     // Initialization of 'Button4'
     //
@@ -231,16 +230,16 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
     //
     // Initialization of 'Listview'
     //
-		count1=__HAL_TIM_GET_COUNTER(&TIM1_Handler);
-		count2=__HAL_TIM_GET_COUNTER(&TIM2_Handler);
-		count3=__HAL_TIM_GET_COUNTER(&TIM3_Handler);
-		count4=__HAL_TIM_GET_COUNTER(&TIM4_Handler);
-		count5=__HAL_TIM_GET_COUNTER(&TIM5_Handler);
-		angle1 = count_to_angle(count1);
-		angle2 = count_to_angle(count2);
-		angle3 = count_to_angle(count3);
-		angle4 = count_to_angle(count4);
-		angle5 = count_to_angle(count5);
+//		count1=__HAL_TIM_GET_COUNTER(&TIM1_Handler);
+//		count2=__HAL_TIM_GET_COUNTER(&TIM2_Handler);
+//		count3=__HAL_TIM_GET_COUNTER(&TIM3_Handler);
+//		count4=__HAL_TIM_GET_COUNTER(&TIM4_Handler);
+//		count5=__HAL_TIM_GET_COUNTER(&TIM5_Handler);
+//		angle1 = count_to_angle(count1);
+//		angle2 = count_to_angle(count2);
+//		angle3 = count_to_angle(count3);
+//		angle4 = count_to_angle(count4);
+//		angle5 = count_to_angle(count5);
 		//小数转字符串
 		sprintf(&joint_angle1[0], "%6.2f", angle1);
 		sprintf(&joint_angle2[0], "%6.2f", angle2);
@@ -275,6 +274,48 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
     // USER START (Optionally insert additional code for further widget initialization)
     // USER END
     break;
+		case WM_PAINT:
+		count1=__HAL_TIM_GET_COUNTER(&TIM1_Handler);
+		count2=__HAL_TIM_GET_COUNTER(&TIM2_Handler);
+		count3=__HAL_TIM_GET_COUNTER(&TIM3_Handler);
+		count4=__HAL_TIM_GET_COUNTER(&TIM4_Handler);
+		count5=__HAL_TIM_GET_COUNTER(&TIM5_Handler);
+		angle1 = count_to_angle(count1);
+		angle2 = count_to_angle(count2);
+		angle3 = count_to_angle(count3);
+		angle4 = count_to_angle(count4);
+		angle5 = count_to_angle(count5);
+		//小数转字符串
+		sprintf(&joint_angle1[0], "%6.2f", angle1);
+		sprintf(&joint_angle2[0], "%6.2f", angle2);
+		sprintf(&joint_angle3[0], "%6.2f", angle3);
+		sprintf(&joint_angle4[0], "%6.2f", angle4);
+		sprintf(&joint_angle5[0], "%6.2f", angle5);
+//		
+    hItem = WM_GetDialogItem(pMsg->hWin, ID_LISTVIEW_0);
+//    LISTVIEW_AddColumn(hItem, 100, "number of joints", GUI_TA_HCENTER | GUI_TA_VCENTER);
+//    LISTVIEW_SetGridVis(hItem, 1);
+//    LISTVIEW_AddRow(hItem, NULL);
+//		LISTVIEW_AddRow(hItem, NULL);
+//		LISTVIEW_AddRow(hItem, NULL);
+//    LISTVIEW_AddRow(hItem, NULL);
+//    LISTVIEW_AddRow(hItem, NULL);
+//    LISTVIEW_AddColumn(hItem, 100, "relative angles", GUI_TA_HCENTER | GUI_TA_VCENTER);
+//    LISTVIEW_SetRowHeight(hItem, 30);
+//    LISTVIEW_SetHeaderHeight(hItem, 30);
+    LISTVIEW_SetItemText(hItem, 0, 0, "joint1");
+    LISTVIEW_SetItemText(hItem, 0, 1, "joint2");
+    LISTVIEW_SetItemText(hItem, 0, 2, "joint3");
+    LISTVIEW_SetItemText(hItem, 0, 3, "joint4");
+    LISTVIEW_SetItemText(hItem, 0, 4, "joint5");
+		LISTVIEW_SetItemText(hItem, 1, 0, &joint_angle1[0]);
+    LISTVIEW_SetItemText(hItem, 1, 1, &joint_angle2[0]);
+    LISTVIEW_SetItemText(hItem, 1, 2, &joint_angle3[0]);
+    LISTVIEW_SetItemText(hItem, 1, 3, &joint_angle4[0]);
+    LISTVIEW_SetItemText(hItem, 1, 4, &joint_angle5[0]);
+//    LISTVIEW_SetFont(hItem, GUI_FONT_20_ASCII);
+//    LISTVIEW_SetItemBkColor(hItem, 0, 0, LISTVIEW_CI_UNSEL, GUI_MAKE_COLOR(0x00FFFFFF));
+		break;
   case WM_NOTIFY_PARENT:
     Id    = WM_GetId(pMsg->hWinSrc);
     NCode = pMsg->Data.v;
@@ -306,13 +347,11 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         break;
       case WM_NOTIFICATION_RELEASED:
         // USER START (Optionally insert code for reacting on notification message)
-//				LED0_Toggle;
-				LED1_Toggle;
 				TIM_SetTIM8Compare1(10);
 				TIM_SetTIM8Compare2(10);
 				TIM_SetTIM8Compare3(10);
 				TIM_SetTIM8Compare4(10);
-				TIM_SetTIM9Compare1(10);
+				TIM_SetTIM9Compare1(0);
         // USER END
         break;
       // USER START (Optionally insert additional code for further notification handling)
@@ -328,14 +367,11 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         break;
       case WM_NOTIFICATION_RELEASED:
         // USER START (Optionally insert code for reacting on notification message)
-//				hItem = WM_GetDialogItem(hDlg, ID_CHECKBOX_0);	//获取CHECKBOX的句柄
-				if(ConfirmFlag) LED1_Toggle;   //如果复选框1被选中，LED1反转
-				
-				TIM_SetTIM8Compare1(10);
-				TIM_SetTIM8Compare2(10);
-				TIM_SetTIM8Compare3(10);
-				TIM_SetTIM8Compare4(10);
-				TIM_SetTIM9Compare1(10);
+				TIM_SetTIM8Compare1(50);
+				TIM_SetTIM8Compare2(50);
+				TIM_SetTIM8Compare3(50);
+				TIM_SetTIM8Compare4(50);
+				TIM_SetTIM9Compare1(30);
         // USER END
         break;
       // USER START (Optionally insert additional code for further notification handling)
@@ -350,11 +386,11 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         break;
       case WM_NOTIFICATION_RELEASED:
         // USER START (Optionally insert code for reacting on notification message)
-				TIM_SetTIM8Compare1(10);
-				TIM_SetTIM8Compare2(10);
-				TIM_SetTIM8Compare3(10);
-				TIM_SetTIM8Compare4(10);
-				TIM_SetTIM9Compare1(10);
+				TIM_SetTIM8Compare1(100);
+				TIM_SetTIM8Compare2(100);
+				TIM_SetTIM8Compare3(100);
+				TIM_SetTIM8Compare4(100);
+				TIM_SetTIM9Compare1(100);
         // USER END
         break;
       // USER START (Optionally insert additional code for further notification handling)
@@ -417,8 +453,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         break;
       case WM_NOTIFICATION_VALUE_CHANGED:
         // USER START (Optionally insert code for reacting on notification message)
-				if (ReverseFlag)ReverseFlag = 0;
-			  else ReverseFlag = 1;
+				LED1_Toggle;   //如果复选框2被选中，LED1反转,改变方向
         // USER END
         break;
       // USER START (Optionally insert additional code for further notification handling)
@@ -433,11 +468,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         break;
       case WM_NOTIFICATION_RELEASED:
         // USER START (Optionally insert code for reacting on notification message)
-				if(ConfirmFlag) 
-				{
-					LED1_Toggle;   //如果复选框1被选中，LED1反转
-					SendPulse(drill_depth);
-				}
+				if(ConfirmFlag)SendPulse(drill_depth);
         // USER END
         break;
       // USER START (Optionally insert additional code for further notification handling)
@@ -452,6 +483,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         break;
       case WM_NOTIFICATION_RELEASED:
         // USER START (Optionally insert code for reacting on notification message)
+				HAL_TIM_PWM_Stop_IT(&TIM10_Handler,TIM_CHANNEL_1);//关闭TIM10通道1中断模式
         // USER END
         break;
       // USER START (Optionally insert additional code for further notification handling)
@@ -503,7 +535,11 @@ WM_HWIN CreateFramewin(void) {
   WM_HWIN hWin;
 
   hWin = GUI_CreateDialogBox(_aDialogCreate, GUI_COUNTOF(_aDialogCreate), _cbDialog, WM_HBKWIN, 0, 0);
-  return hWin;
+	while(1)
+	{
+		WM_Invalidate(hWin);
+		GUI_Delay(100);
+	}
 }
 
 // USER START (Optionally insert additional public code)

@@ -75,9 +75,8 @@
 "..\EMWIN\STemWin\Lib\GUI_CM4F_L.lib"
 "..\obj\guiconf.o"
 "..\obj\gui_x_ucosiii.o"
-"..\obj\guidrv_template.o"
 "..\obj\gui_x_touch_analog.o"
-"..\obj\lcdconf_flexcolor_template.o"
+"..\obj\lcdconf_lin_template.o"
 "..\obj\framewindlg.o"
 --strict --scatter "..\OBJ\Template.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
