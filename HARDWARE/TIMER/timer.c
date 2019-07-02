@@ -214,14 +214,14 @@ void HAL_TIM_Encoder_MspInit(TIM_HandleTypeDef *htim)
 	else if(htim->Instance==TIM5)
   {
 		__HAL_RCC_TIM5_CLK_ENABLE();                    //使能定时器5
-		__HAL_RCC_GPIOA_CLK_ENABLE();		            //开启GPIOH时钟
+		__HAL_RCC_GPIOH_CLK_ENABLE();		            //开启GPIOH时钟
 	
-		GPIO_Initure.Pin=GPIO_PIN_0|GPIO_PIN_1;       //PA0\1
+		GPIO_Initure.Pin=GPIO_PIN_10|GPIO_PIN_11;       //PA0\1
     GPIO_Initure.Mode=GPIO_MODE_AF_PP;  	        //复用推挽
     GPIO_Initure.Pull=GPIO_PULLUP;        		   	//上拉
     GPIO_Initure.Speed=GPIO_SPEED_HIGH;     		//高速
 		GPIO_Initure.Alternate=GPIO_AF2_TIM5;			
-    HAL_GPIO_Init(GPIOA,&GPIO_Initure);
+    HAL_GPIO_Init(GPIOH,&GPIO_Initure);
   }
 }
 

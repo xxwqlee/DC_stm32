@@ -230,16 +230,6 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
     //
     // Initialization of 'Listview'
     //
-//		count1=__HAL_TIM_GET_COUNTER(&TIM1_Handler);
-//		count2=__HAL_TIM_GET_COUNTER(&TIM2_Handler);
-//		count3=__HAL_TIM_GET_COUNTER(&TIM3_Handler);
-//		count4=__HAL_TIM_GET_COUNTER(&TIM4_Handler);
-//		count5=__HAL_TIM_GET_COUNTER(&TIM5_Handler);
-//		angle1 = count_to_angle(count1);
-//		angle2 = count_to_angle(count2);
-//		angle3 = count_to_angle(count3);
-//		angle4 = count_to_angle(count4);
-//		angle5 = count_to_angle(count5);
 		//Ð¡Êý×ª×Ö·û´®
 		sprintf(&joint_angle1[0], "%6.2f", angle1);
 		sprintf(&joint_angle2[0], "%6.2f", angle2);
@@ -293,28 +283,11 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 		sprintf(&joint_angle5[0], "%6.2f", angle5);
 //		
     hItem = WM_GetDialogItem(pMsg->hWin, ID_LISTVIEW_0);
-//    LISTVIEW_AddColumn(hItem, 100, "number of joints", GUI_TA_HCENTER | GUI_TA_VCENTER);
-//    LISTVIEW_SetGridVis(hItem, 1);
-//    LISTVIEW_AddRow(hItem, NULL);
-//		LISTVIEW_AddRow(hItem, NULL);
-//		LISTVIEW_AddRow(hItem, NULL);
-//    LISTVIEW_AddRow(hItem, NULL);
-//    LISTVIEW_AddRow(hItem, NULL);
-//    LISTVIEW_AddColumn(hItem, 100, "relative angles", GUI_TA_HCENTER | GUI_TA_VCENTER);
-//    LISTVIEW_SetRowHeight(hItem, 30);
-//    LISTVIEW_SetHeaderHeight(hItem, 30);
-    LISTVIEW_SetItemText(hItem, 0, 0, "joint1");
-    LISTVIEW_SetItemText(hItem, 0, 1, "joint2");
-    LISTVIEW_SetItemText(hItem, 0, 2, "joint3");
-    LISTVIEW_SetItemText(hItem, 0, 3, "joint4");
-    LISTVIEW_SetItemText(hItem, 0, 4, "joint5");
 		LISTVIEW_SetItemText(hItem, 1, 0, &joint_angle1[0]);
     LISTVIEW_SetItemText(hItem, 1, 1, &joint_angle2[0]);
     LISTVIEW_SetItemText(hItem, 1, 2, &joint_angle3[0]);
     LISTVIEW_SetItemText(hItem, 1, 3, &joint_angle4[0]);
     LISTVIEW_SetItemText(hItem, 1, 4, &joint_angle5[0]);
-//    LISTVIEW_SetFont(hItem, GUI_FONT_20_ASCII);
-//    LISTVIEW_SetItemBkColor(hItem, 0, 0, LISTVIEW_CI_UNSEL, GUI_MAKE_COLOR(0x00FFFFFF));
 		break;
   case WM_NOTIFY_PARENT:
     Id    = WM_GetId(pMsg->hWinSrc);
