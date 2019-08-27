@@ -3,7 +3,11 @@
 <title>Static Call Graph - [..\OBJ\Template.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OBJ\Template.axf</H1><HR>
+<<<<<<< HEAD
 <BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060300: Last Updated: Sun Aug 25 18:33:58 2019
+=======
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Tue Jul 02 16:54:02 2019
+>>>>>>> 8861c1ad3fcaf686158852c56cad1b0fd7193693
 <BR><P>
 <H3>Maximum Stack Usage =        832 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -7160,7 +7164,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[400]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_LTDC_IRQHandler
 </UL>
 
-<P><STRONG><a name="[405]"></a>HAL_LTDC_MspInit</STRONG> (Thumb, 218 bytes, Stack size 32 bytes, ltdc.o(i.HAL_LTDC_MspInit))
+<P><STRONG><a name="[405]"></a>HAL_LTDC_MspInit</STRONG> (Thumb, 246 bytes, Stack size 32 bytes, ltdc.o(i.HAL_LTDC_MspInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = HAL_LTDC_MspInit &rArr; HAL_GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[26c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_Init
@@ -7382,7 +7386,7 @@ Global Symbols
 <LI><a href="#[57c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_Encoder_Init
 </UL>
 
-<P><STRONG><a name="[41f]"></a>HAL_TIM_Encoder_MspInit</STRONG> (Thumb, 340 bytes, Stack size 48 bytes, timer.o(i.HAL_TIM_Encoder_MspInit))
+<P><STRONG><a name="[41f]"></a>HAL_TIM_Encoder_MspInit</STRONG> (Thumb, 344 bytes, Stack size 48 bytes, timer.o(i.HAL_TIM_Encoder_MspInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = HAL_TIM_Encoder_MspInit &rArr; HAL_GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[26c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_Init
@@ -14001,7 +14005,7 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> lcdconf_lin_template.o(i.LCD_X_Config)
 </UL>
-<P><STRONG><a name="[bf]"></a>_cbDialog</STRONG> (Thumb, 1660 bytes, Stack size 112 bytes, framewindlg.o(i._cbDialog))
+<P><STRONG><a name="[bf]"></a>_cbDialog</STRONG> (Thumb, 1600 bytes, Stack size 112 bytes, framewindlg.o(i._cbDialog))
 <BR><BR>[Stack]<UL><LI>Max Depth = 736 + Unknown Stack Size
 <LI>Call Chain = _cbDialog &rArr; LISTVIEW_AddRow &rArr; LISTVIEW__UpdateScrollParas &rArr; WM_SetScrollbarV &rArr; WM__SetScrollbarV &rArr; _SetScrollbar &rArr; SCROLLBAR_CreateAttached &rArr; SCROLLBAR_CreateEx &rArr; SCROLLBAR_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM_BringToBottom &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>

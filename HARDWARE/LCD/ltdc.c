@@ -318,7 +318,7 @@ u16 LTDC_PanelID_Read(void)
 	u8 idx=0;
     GPIO_InitTypeDef GPIO_Initure;
     __HAL_RCC_GPIOG_CLK_ENABLE();       //使能GPIOG时钟
-	__HAL_RCC_GPIOI_CLK_ENABLE();       //使能GPIOI时钟
+		__HAL_RCC_GPIOI_CLK_ENABLE();       //使能GPIOI时钟
     
     GPIO_Initure.Pin=GPIO_PIN_6;        //PG6
     GPIO_Initure.Mode=GPIO_MODE_INPUT;  //输入
@@ -332,12 +332,12 @@ u16 LTDC_PanelID_Read(void)
     idx=(u8)HAL_GPIO_ReadPin(GPIOG,GPIO_PIN_6); //读取M0
     idx|=(u8)HAL_GPIO_ReadPin(GPIOI,GPIO_PIN_2)<<1;//读取M1
     idx|=(u8)HAL_GPIO_ReadPin(GPIOI,GPIO_PIN_7)<<2;//读取M2
-	if(idx==0)return 0X4342;		//4.3寸屏,480*272分辨率
-	else if(idx==1)return 0X7084;	//7寸屏,800*480分辨率
-	else if(idx==2)return 0X7016;	//7寸屏,1024*600分辨率
-	else if(idx==3)return 0X7018;	//7寸屏,1280*800分辨率
-	else if(idx==4)return 0X8017; 	//8寸屏,1024*768分辨率
-	else return 0;
+		if(idx==0)return 0X4342;		//4.3寸屏,480*272分辨率
+		else if(idx==1)return 0X7084;	//7寸屏,800*480分辨率
+		else if(idx==2)return 0X7016;	//7寸屏,1024*600分辨率
+		else if(idx==3)return 0X7018;	//7寸屏,1280*800分辨率
+		else if(idx==4)return 0X8017; 	//8寸屏,1024*768分辨率
+		else return 0;
 }
 
 //LCD初始化函数
@@ -446,6 +446,7 @@ void HAL_LTDC_MspInit(LTDC_HandleTypeDef* hltdc)
     
     __HAL_RCC_LTDC_CLK_ENABLE();                //使能LTDC时钟
     __HAL_RCC_DMA2D_CLK_ENABLE();               //使能DMA2D时钟
+		__HAL_RCC_GPIOA_CLK_ENABLE();               //使能GPIOA时钟
     __HAL_RCC_GPIOB_CLK_ENABLE();               //使能GPIOB时钟
     __HAL_RCC_GPIOF_CLK_ENABLE();               //使能GPIOF时钟
     __HAL_RCC_GPIOG_CLK_ENABLE();               //使能GPIOG时钟
@@ -467,12 +468,16 @@ void HAL_LTDC_MspInit(LTDC_HandleTypeDef* hltdc)
     GPIO_Initure.Alternate=GPIO_AF14_LTDC;      //复用为LTDC
     HAL_GPIO_Init(GPIOF,&GPIO_Initure);
     
-    //初始化PG6,7,11
+    //初始化PA11,12
+    GPIO_Initure.Pin=GPIO_PIN_11|GPIO_PIN_12;
+    HAL_GPIO_Init(GPIOA,&GPIO_Initure);
+		
+		//初始化PG6,7,11
     GPIO_Initure.Pin=GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_11;
     HAL_GPIO_Init(GPIOG,&GPIO_Initure);
     
     //初始化PH8,9,10,11,12,13,14,15
-    GPIO_Initure.Pin=GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10|GPIO_PIN_11|\
+    GPIO_Initure.Pin=GPIO_PIN_8|GPIO_PIN_9|\
                      GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15;
     HAL_GPIO_Init(GPIOH,&GPIO_Initure);
     
