@@ -3,7 +3,7 @@
 ..\obj\main.o: ..\USER\stm32f7xx.h
 ..\obj\main.o: ..\USER\stm32f767xx.h
 ..\obj\main.o: ..\CORE\core_cm7.h
-..\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\main.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\main.o: ..\CORE\core_cmInstr.h
 ..\obj\main.o: ..\CORE\cmsis_armcc.h
 ..\obj\main.o: ..\CORE\core_cmFunc.h
@@ -14,7 +14,7 @@
 ..\obj\main.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h
 ..\obj\main.o: ..\USER\stm32f7xx.h
 ..\obj\main.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h
-..\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\main.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\main.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc_ex.h
 ..\obj\main.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio.h
 ..\obj\main.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio_ex.h
@@ -82,7 +82,7 @@
 ..\obj\main.o: ..\HARDWARE\TIMER\timer.h
 ..\obj\main.o: ..\HARDWARE\SDRAM\sdram.h
 ..\obj\main.o: ..\HARDWARE\LCD\tftlcd.h
-..\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+..\obj\main.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\main.o: ..\HARDWARE\LCD\ltdc.h
 ..\obj\main.o: ..\HARDWARE\MPU\mpu.h
 ..\obj\main.o: ..\USMART\usmart.h
@@ -102,10 +102,10 @@
 ..\obj\main.o: ..\EMWIN\STemWin\inc\WM.h
 ..\obj\main.o: ..\EMWIN\STemWin\inc\WM_GUI.h
 ..\obj\main.o: ..\UCOSIII\UCOS-CONFIG\includes.h
-..\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-..\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\ctype.h
-..\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
-..\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+..\obj\main.o: E:\Keil\ARM\ARMCC\Bin\..\include\string.h
+..\obj\main.o: E:\Keil\ARM\ARMCC\Bin\..\include\ctype.h
+..\obj\main.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdarg.h
+..\obj\main.o: E:\Keil\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\main.o: ..\UCOSIII\uCOS-III\Source\os.h
 ..\obj\main.o: ..\UCOSIII\UCOS-CONFIG\os_cfg.h
 ..\obj\main.o: ..\UCOSIII\uC-CPU\cpu_core.h
@@ -132,7 +132,7 @@
 ..\obj\main.o: ..\EMWIN\STemWin\inc\GUI_Private.h
 ..\obj\main.o: ..\EMWIN\STemWin\inc\LCD_Protected.h
 ..\obj\main.o: ..\EMWIN\STemWin\inc\GUI_Debug.h
-..\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\main.o: E:\Keil\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\main.o: ..\EMWIN\STemWin\inc\SCROLLBAR.h
 ..\obj\main.o: ..\EMWIN\STemWin\inc\WIDGET.h
 ..\obj\main.o: ..\EMWIN\STemWin\inc\CALENDAR.h

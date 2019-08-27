@@ -22,7 +22,7 @@
 
  UCOSIII中以下优先级用户程序不能使用，ALIENTEK
  将这些优先级分配给了UCOSIII的5个系统内部任务
- 优先级0：中断服务服务管理任务 OS_IntQTask()
+ 优先级0：中断服务管理任务 OS_IntQTask()
  优先级1：时钟节拍任务 OS_TickTask()
  优先级2：定时任务 OS_TmrTask()
  优先级OS_CFG_PRIO_MAX-2：统计任务 OS_StatTask()
@@ -80,7 +80,7 @@ void emwindemo_task(void *p_arg);
 
 int main(void)
 {  
-  OS_ERR err;
+    OS_ERR err;
 	CPU_SR_ALLOC();
     
 	Write_Through();                //Cahce强制透写
@@ -95,7 +95,7 @@ int main(void)
 	LED_Init();                     //初始化LED
 	SDRAM_Init();                   //SDRAM初始化
 	TFTLCD_Init();                  //初始化LCD
-  TP_Init();				        //触摸屏初始化
+    TP_Init();				        //触摸屏初始化
 	// 初始化定时器1-5用于关节编码器读数
 	TIM1_Encoder_Init(0xFFFF-1, 1-1);  //初始化编码器1 逆时针增
 	TIM2_Encoder_Init(0xFFFF-1, 1-1);	 //初始化编码器2 逆时针增
@@ -108,11 +108,11 @@ int main(void)
 	//初始化定时器8/9用于控制PMW输出
 	TIM8_PWM_Init(100-1, 108-1);     //216M/108=2M的计数频率，自动重装载为100，那么PWM频率为2M/100=20kHZ
 	TIM9_PWM_Init(100-1, 108-1);     //216M/108=2M的计数频率，自动重装载为100，那么PWM频率为2M/100=20kHZ
-  my_mem_init(SRAMIN);		    //初始化内部内存池
+    my_mem_init(SRAMIN);		    //初始化内部内存池
 	my_mem_init(SRAMEX);		    //初始化外部内存池
 	my_mem_init(SRAMDTCM);		    //初始化DTCM内存池
     
-  OSInit(&err);		            //初始化UCOSIII
+    OSInit(&err);		            //初始化UCOSIII
 	OS_CRITICAL_ENTER();            //进入临界区
 	//创建开始任务
 	OSTaskCreate((OS_TCB 	* )&StartTaskTCB,		//任务控制块
@@ -139,7 +139,6 @@ void start_task(void *p_arg)
 	OS_ERR err;
 	CPU_SR_ALLOC();
 	p_arg = p_arg;
-
 	CPU_Init();
 #if OS_CFG_STAT_TASK_EN > 0u
    OSStatTaskCPUUsageInit(&err);  	//统计任务                
@@ -149,7 +148,7 @@ void start_task(void *p_arg)
     CPU_IntDisMeasMaxCurReset();	
 #endif
 
-#if	OS_CFG_SCHED_ROUND_ROBIN_EN  //当使用时间片轮转的时候
+#if	OS_CFG_SCHED_ROUND_ROBIN_EN     //当使用时间片轮转的时候
 	//使能时间片轮转调度功能,设置默认的时间片长度
 	OSSchedRoundRobinCfg(DEF_ENABLED,1,&err);  
 #endif		

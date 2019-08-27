@@ -479,12 +479,11 @@ ARM Macro Assembler    Page 8
               00000000 
               E000ED04 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M7.fp.dp --apcs=
-interwork --depend=..\obj\os_cpu_a.d -o..\obj\os_cpu_a.o -I"D:\SEA\01. Keil\DC_
-stm32\USER\RTE" -IC:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.7.0 -IC:\Keil_v5\ARM
-\CMSIS\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.7.0\Drivers\CMSIS\Dev
-ice\ST\STM32F7xx\Include --predefine="__UVISION_VERSION SETA 514" --predefine="
-STM32F767xx SETA 1" --list=..\obj\os_cpu_a.lst ..\UCOSIII\uCOS-III\Ports\ARM-Co
-rtex-M4\Generic\RealView\os_cpu_a.asm
+interwork --depend=..\obj\os_cpu_a.d -o..\obj\os_cpu_a.o -IG:\02.c\DC_stm32\USE
+R\RTE -IE:\Keil\ARM\PACK\Keil\STM32F7xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32
+F7xx\Include -IE:\Keil\ARM\CMSIS\Include --predefine="__UVISION_VERSION SETA 52
+1" --predefine="STM32F767xx SETA 1" --list=..\obj\os_cpu_a.lst ..\UCOSIII\uCOS-
+III\Ports\ARM-Cortex-M4\Generic\RealView\os_cpu_a.asm
 
 
 

@@ -4,7 +4,7 @@
 ..\obj\sdram.o: ..\USER\stm32f7xx.h
 ..\obj\sdram.o: ..\USER\stm32f767xx.h
 ..\obj\sdram.o: ..\CORE\core_cm7.h
-..\obj\sdram.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\sdram.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\sdram.o: ..\CORE\core_cmInstr.h
 ..\obj\sdram.o: ..\CORE\cmsis_armcc.h
 ..\obj\sdram.o: ..\CORE\core_cmFunc.h
@@ -15,7 +15,7 @@
 ..\obj\sdram.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h
 ..\obj\sdram.o: ..\USER\stm32f7xx.h
 ..\obj\sdram.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h
-..\obj\sdram.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\sdram.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\sdram.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc_ex.h
 ..\obj\sdram.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio.h
 ..\obj\sdram.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio_ex.h

@@ -4,7 +4,7 @@
 ..\obj\delay.o: ..\USER\stm32f7xx.h
 ..\obj\delay.o: ..\USER\stm32f767xx.h
 ..\obj\delay.o: ..\CORE\core_cm7.h
-..\obj\delay.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\delay.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\delay.o: ..\CORE\core_cmInstr.h
 ..\obj\delay.o: ..\CORE\cmsis_armcc.h
 ..\obj\delay.o: ..\CORE\core_cmFunc.h
@@ -15,7 +15,7 @@
 ..\obj\delay.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h
 ..\obj\delay.o: ..\USER\stm32f7xx.h
 ..\obj\delay.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h
-..\obj\delay.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\delay.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\delay.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc_ex.h
 ..\obj\delay.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio.h
 ..\obj\delay.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio_ex.h
@@ -78,11 +78,11 @@
 ..\obj\delay.o: ..\CORE\core_cm7.h
 ..\obj\delay.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h
 ..\obj\delay.o: ..\UCOSIII\UCOS-CONFIG\includes.h
-..\obj\delay.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-..\obj\delay.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\ctype.h
-..\obj\delay.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-..\obj\delay.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
-..\obj\delay.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+..\obj\delay.o: E:\Keil\ARM\ARMCC\Bin\..\include\string.h
+..\obj\delay.o: E:\Keil\ARM\ARMCC\Bin\..\include\ctype.h
+..\obj\delay.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
+..\obj\delay.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdarg.h
+..\obj\delay.o: E:\Keil\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\delay.o: ..\UCOSIII\uCOS-III\Source\os.h
 ..\obj\delay.o: ..\UCOSIII\UCOS-CONFIG\os_cfg.h
 ..\obj\delay.o: ..\UCOSIII\uC-CPU\cpu_core.h

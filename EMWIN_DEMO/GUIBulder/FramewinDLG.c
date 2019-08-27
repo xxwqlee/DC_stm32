@@ -240,7 +240,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 //		angle3 = count_to_angle(count3);
 //		angle4 = count_to_angle(count4);
 //		angle5 = count_to_angle(count5);
-		//小数转字符串
+		//浮点数数转字符串
 		sprintf(&joint_angle1[0], "%6.2f", angle1);
 		sprintf(&joint_angle2[0], "%6.2f", angle2);
 		sprintf(&joint_angle3[0], "%6.2f", angle3);
@@ -251,8 +251,8 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
     LISTVIEW_AddColumn(hItem, 100, "number of joints", GUI_TA_HCENTER | GUI_TA_VCENTER);
     LISTVIEW_SetGridVis(hItem, 1);
     LISTVIEW_AddRow(hItem, NULL);
-		LISTVIEW_AddRow(hItem, NULL);
-		LISTVIEW_AddRow(hItem, NULL);
+	LISTVIEW_AddRow(hItem, NULL);
+	LISTVIEW_AddRow(hItem, NULL);
     LISTVIEW_AddRow(hItem, NULL);
     LISTVIEW_AddRow(hItem, NULL);
     LISTVIEW_AddColumn(hItem, 100, "relative angles", GUI_TA_HCENTER | GUI_TA_VCENTER);
@@ -263,7 +263,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
     LISTVIEW_SetItemText(hItem, 0, 2, "joint3");
     LISTVIEW_SetItemText(hItem, 0, 3, "joint4");
     LISTVIEW_SetItemText(hItem, 0, 4, "joint5");
-		LISTVIEW_SetItemText(hItem, 1, 0, &joint_angle1[0]);
+	LISTVIEW_SetItemText(hItem, 1, 0, &joint_angle1[0]);
     LISTVIEW_SetItemText(hItem, 1, 1, &joint_angle2[0]);
     LISTVIEW_SetItemText(hItem, 1, 2, &joint_angle3[0]);
     LISTVIEW_SetItemText(hItem, 1, 3, &joint_angle4[0]);
@@ -308,7 +308,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
     LISTVIEW_SetItemText(hItem, 0, 2, "joint3");
     LISTVIEW_SetItemText(hItem, 0, 3, "joint4");
     LISTVIEW_SetItemText(hItem, 0, 4, "joint5");
-		LISTVIEW_SetItemText(hItem, 1, 0, &joint_angle1[0]);
+	LISTVIEW_SetItemText(hItem, 1, 0, &joint_angle1[0]);
     LISTVIEW_SetItemText(hItem, 1, 1, &joint_angle2[0]);
     LISTVIEW_SetItemText(hItem, 1, 2, &joint_angle3[0]);
     LISTVIEW_SetItemText(hItem, 1, 3, &joint_angle4[0]);

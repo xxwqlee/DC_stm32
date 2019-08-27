@@ -4,7 +4,7 @@
 ..\obj\usart.o: ..\USER\stm32f7xx.h
 ..\obj\usart.o: ..\USER\stm32f767xx.h
 ..\obj\usart.o: ..\CORE\core_cm7.h
-..\obj\usart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\usart.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\usart.o: ..\CORE\core_cmInstr.h
 ..\obj\usart.o: ..\CORE\cmsis_armcc.h
 ..\obj\usart.o: ..\CORE\core_cmFunc.h
@@ -15,7 +15,7 @@
 ..\obj\usart.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h
 ..\obj\usart.o: ..\USER\stm32f7xx.h
 ..\obj\usart.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h
-..\obj\usart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\usart.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\usart.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc_ex.h
 ..\obj\usart.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio.h
 ..\obj\usart.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio_ex.h
@@ -78,11 +78,11 @@
 ..\obj\usart.o: ..\CORE\core_cm7.h
 ..\obj\usart.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h
 ..\obj\usart.o: ..\UCOSIII\UCOS-CONFIG\includes.h
-..\obj\usart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-..\obj\usart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\ctype.h
-..\obj\usart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-..\obj\usart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
-..\obj\usart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+..\obj\usart.o: E:\Keil\ARM\ARMCC\Bin\..\include\string.h
+..\obj\usart.o: E:\Keil\ARM\ARMCC\Bin\..\include\ctype.h
+..\obj\usart.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
+..\obj\usart.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdarg.h
+..\obj\usart.o: E:\Keil\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\usart.o: ..\UCOSIII\uCOS-III\Source\os.h
 ..\obj\usart.o: ..\UCOSIII\UCOS-CONFIG\os_cfg.h
 ..\obj\usart.o: ..\UCOSIII\uC-CPU\cpu_core.h

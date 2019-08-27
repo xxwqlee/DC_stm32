@@ -21,7 +21,7 @@
 ..\obj\os_app_hooks.o: ..\USER\stm32f7xx.h
 ..\obj\os_app_hooks.o: ..\USER\stm32f767xx.h
 ..\obj\os_app_hooks.o: ..\CORE\core_cm7.h
-..\obj\os_app_hooks.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\os_app_hooks.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\os_app_hooks.o: ..\CORE\core_cmInstr.h
 ..\obj\os_app_hooks.o: ..\CORE\cmsis_armcc.h
 ..\obj\os_app_hooks.o: ..\CORE\core_cmFunc.h
@@ -29,7 +29,7 @@
 ..\obj\os_app_hooks.o: ..\USER\system_stm32f7xx.h
 ..\obj\os_app_hooks.o: ..\USER\stm32f7xx_hal_conf.h
 ..\obj\os_app_hooks.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h
-..\obj\os_app_hooks.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\os_app_hooks.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\os_app_hooks.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc_ex.h
 ..\obj\os_app_hooks.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio.h
 ..\obj\os_app_hooks.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio_ex.h

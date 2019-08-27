@@ -7,12 +7,12 @@
 ..\obj\gui_x_ucosiii.o: ..\EMWIN\STemWin\inc\Global.h
 ..\obj\gui_x_ucosiii.o: ..\EMWIN\STemWin\inc\GUI_Version.h
 ..\obj\gui_x_ucosiii.o: ..\UCOSIII\UCOS-CONFIG\includes.h
-..\obj\gui_x_ucosiii.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-..\obj\gui_x_ucosiii.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-..\obj\gui_x_ucosiii.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\ctype.h
-..\obj\gui_x_ucosiii.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-..\obj\gui_x_ucosiii.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
-..\obj\gui_x_ucosiii.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+..\obj\gui_x_ucosiii.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\gui_x_ucosiii.o: E:\Keil\ARM\ARMCC\Bin\..\include\string.h
+..\obj\gui_x_ucosiii.o: E:\Keil\ARM\ARMCC\Bin\..\include\ctype.h
+..\obj\gui_x_ucosiii.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
+..\obj\gui_x_ucosiii.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdarg.h
+..\obj\gui_x_ucosiii.o: E:\Keil\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\gui_x_ucosiii.o: ..\UCOSIII\uCOS-III\Source\os.h
 ..\obj\gui_x_ucosiii.o: ..\UCOSIII\UCOS-CONFIG\os_cfg.h
 ..\obj\gui_x_ucosiii.o: ..\UCOSIII\uC-CPU\cpu_core.h
@@ -37,7 +37,7 @@
 ..\obj\gui_x_ucosiii.o: ..\USER\stm32f7xx.h
 ..\obj\gui_x_ucosiii.o: ..\USER\stm32f767xx.h
 ..\obj\gui_x_ucosiii.o: ..\CORE\core_cm7.h
-..\obj\gui_x_ucosiii.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\gui_x_ucosiii.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\gui_x_ucosiii.o: ..\CORE\core_cmInstr.h
 ..\obj\gui_x_ucosiii.o: ..\CORE\cmsis_armcc.h
 ..\obj\gui_x_ucosiii.o: ..\CORE\core_cmFunc.h

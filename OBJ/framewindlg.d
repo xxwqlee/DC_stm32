@@ -16,7 +16,7 @@
 ..\obj\framewindlg.o: ..\EMWIN\STemWin\inc\GUI_Private.h
 ..\obj\framewindlg.o: ..\EMWIN\STemWin\inc\LCD_Protected.h
 ..\obj\framewindlg.o: ..\EMWIN\STemWin\inc\GUI_Debug.h
-..\obj\framewindlg.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\framewindlg.o: E:\Keil\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\framewindlg.o: ..\EMWIN\STemWin\inc\SCROLLBAR.h
 ..\obj\framewindlg.o: ..\EMWIN\STemWin\inc\WIDGET.h
 ..\obj\framewindlg.o: ..\EMWIN\STemWin\inc\CALENDAR.h
@@ -49,7 +49,7 @@
 ..\obj\framewindlg.o: ..\USER\stm32f7xx.h
 ..\obj\framewindlg.o: ..\USER\stm32f767xx.h
 ..\obj\framewindlg.o: ..\CORE\core_cm7.h
-..\obj\framewindlg.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\framewindlg.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\framewindlg.o: ..\CORE\core_cmInstr.h
 ..\obj\framewindlg.o: ..\CORE\cmsis_armcc.h
 ..\obj\framewindlg.o: ..\CORE\core_cmFunc.h
@@ -60,7 +60,7 @@
 ..\obj\framewindlg.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h
 ..\obj\framewindlg.o: ..\USER\stm32f7xx.h
 ..\obj\framewindlg.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h
-..\obj\framewindlg.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\framewindlg.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\framewindlg.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc_ex.h
 ..\obj\framewindlg.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio.h
 ..\obj\framewindlg.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio_ex.h

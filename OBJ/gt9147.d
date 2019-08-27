@@ -4,7 +4,7 @@
 ..\obj\gt9147.o: ..\USER\stm32f7xx.h
 ..\obj\gt9147.o: ..\USER\stm32f767xx.h
 ..\obj\gt9147.o: ..\CORE\core_cm7.h
-..\obj\gt9147.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\gt9147.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\gt9147.o: ..\CORE\core_cmInstr.h
 ..\obj\gt9147.o: ..\CORE\cmsis_armcc.h
 ..\obj\gt9147.o: ..\CORE\core_cmFunc.h
@@ -15,7 +15,7 @@
 ..\obj\gt9147.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h
 ..\obj\gt9147.o: ..\USER\stm32f7xx.h
 ..\obj\gt9147.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h
-..\obj\gt9147.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\gt9147.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\gt9147.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc_ex.h
 ..\obj\gt9147.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio.h
 ..\obj\gt9147.o: ..\HALLIB\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio_ex.h
@@ -83,6 +83,6 @@
 ..\obj\gt9147.o: ..\HARDWARE\TOUCH\ctiic.h
 ..\obj\gt9147.o: ..\SYSTEM\usart\usart.h
 ..\obj\gt9147.o: ..\SYSTEM\delay\delay.h
-..\obj\gt9147.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+..\obj\gt9147.o: E:\Keil\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\gt9147.o: ..\HARDWARE\LCD\tftlcd.h
-..\obj\gt9147.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+..\obj\gt9147.o: E:\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
